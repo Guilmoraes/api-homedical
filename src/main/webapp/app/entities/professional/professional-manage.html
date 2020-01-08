@@ -1,0 +1,231 @@
+<div class="content content-bg">
+    <form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <h4 class="form-section" id="myProfessionalLabel"
+            data-translate="homedicalApp.professional.home.createOrEditLabel">Create or edit a Professional</h4>
+
+        <div class="row row-form">
+
+            <div class="form-group col-xs-12 col-sm-6" ng-show="vm.professional.id">
+                <label class="control-label" for="id" data-translate="global.field.id">ID</label>
+                <input type="text" class="form-control" id="id" name="id"
+                       ng-model="vm.professional.id" readonly/>
+            </div>
+
+            <div class="form-group form-group col-xs-12 col-sm-6">
+                <label class="control-label" data-translate="homedicalApp.professional.name"
+                       for="field_name">Name</label>
+                <input type="text"
+                       class="form-control"
+                       name="name"
+                       id="field_name"
+                       placeholder="{{'homedicalApp.professional.namePlaceholder' | translate}}"
+                       ng-maxlength="255"
+                       ng-model="vm.professional.name"
+                       required/>
+                <div ng-show="editForm.name.$invalid">
+                    <p class="help-block"
+                       ng-show="editForm.name.$error.required" data-translate="entity.validation.required">
+                        This field is required.
+                    </p>
+                </div>
+            </div>
+
+            <div class="form-group form-group col-xs-12 col-sm-6">
+                <label class="control-label"
+                       data-translate="homedicalApp.professional.email"
+                       for="field_email">Email</label>
+                <input type="email"
+                       class="form-control"
+                       name="email"
+                       ng-maxlength="255"
+                       id="field_email"
+                       placeholder="{{'homedicalApp.professional.emailPlaceholder' | translate}}"
+                       ng-model="vm.professional.email"
+                       required/>
+                <div ng-show="editForm.email.$invalid">
+                    <p class="help-block"
+                       ng-show="editForm.email.$error.required" data-translate="entity.validation.required">
+                        This field is required.
+                    </p>
+                </div>
+            </div>
+
+            <div class="form-group form-group col-xs-12 col-sm-6">
+                <label class="control-label" data-translate="homedicalApp.professional.cpf"
+                       for="field_cpf">Cpf</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="field_cpf"
+                    name="cpf"
+                    placeholder="{{'global.form.identificationNumber.cpf.placeholder' | translate}}"
+                    ng-model="vm.professional.cpf"
+                    ui-br-cpf-mask
+                    required>
+
+                <div ng-show="editForm.cpf.$invalid">
+                    <p class="help-block"
+                       ng-show="editForm.cpf.$error.required" data-translate="entity.validation.required">
+                        This field is required.
+                    </p>
+                </div>
+            </div>
+
+            <div class="form-group form-group col-xs-12">
+                <label class="control-label" data-translate="homedicalApp.professional.specialties"
+                       for="field_specialties">Especialidades</label>
+
+                <input selectize="{labelField: 'name', searchField: 'name'}"
+                       selectize-load-data="vm.loadSpecialties(query, callback)"
+                       selectize-on-select="vm.specialtySelected(id, model)"
+                       selectize-update-event="reload.specialties"
+                       selectize-label-type="disable"
+                       selectize-initial-data="vm.specialties"
+                       selectize-initial-data-load="true"
+                       selectize-initial-data-load-index="vm.professional.specialties"
+                       id="field_specialties"
+                       name="specialties"
+                       placeholder="{{ 'global.form.specialty.placeholder' | translate}}"
+                       required>
+
+                <div>
+                    <p class="help-block"
+                       data-translate="entity.validation.required">
+                        This field is required.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="form-group form-group col-xs-12 col-sm-6">
+                <label class="control-label" data-translate="homedicalApp.professional.phone"
+                       for="field_phone">Telefone</label>
+
+                <input type="text"
+                       class="form-control"
+                       name="phone"
+                       placeholder="{{'global.form.phone.placeholder' | translate}}"
+                       id="field_phone"
+                       ng-model="vm.professional.phone.number"
+                       ui-br-phone-number required/>
+
+                <div ng-show="editForm.phone.$invalid">
+                    <p class="help-block"
+                       ng-show="editForm.phone.$error.required" data-translate="entity.validation.required">
+                        This field is required.
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="form-group form-group col-xs-12">
+                <label class="control-label" data-translate="homedicalApp.professional.zipcode"
+                       for="field_zipcode">Rua</label>
+
+                <input type="text"
+                       class="form-control"
+                       name="zipcode"
+                       id="field_zipcode"
+                       ui-br-cep-mask
+                       placeholder="{{'homedicalApp.professional.zipcodePlaceholder' | translate}}"
+                       ng-model="vm.professional.address.zipcode"/>
+            </div>
+
+            <div class="form-group form-group col-xs-12 col-sm-6">
+                <label class="control-label" data-translate="homedicalApp.professional.street"
+                       for="field_street">Rua</label>
+
+                <input type="text"
+                       class="form-control"
+                       name="street"
+                       ng-maxlength="255"
+                       id="field_street"
+                       placeholder="{{'homedicalApp.professional.streetPlaceholder' | translate}}"
+                       ng-model="vm.professional.address.street"/>
+            </div>
+
+            <div class="form-group form-group col-xs-12 col-sm-6">
+                <label class="control-label" data-translate="homedicalApp.professional.number"
+                       for="field_number">Número</label>
+
+                <input type="text"
+                       class="form-control"
+                       name="number"
+                       ng-maxlength="255"
+                       id="field_number"
+                       placeholder="{{'homedicalApp.professional.numberPlaceholder' | translate}}"
+                       ng-model="vm.professional.address.number"/>
+            </div>
+
+            <div class="form-group form-group col-xs-12 col-sm-6">
+                <label class="control-label" data-translate="homedicalApp.professional.district"
+                       for="field_district">Bairro</label>
+
+                <input type="text"
+                       class="form-control"
+                       name="district"
+                       ng-maxlength="255"
+                       id="field_district"
+                       placeholder="{{'homedicalApp.professional.districtPlaceholder' | translate}}"
+                       ng-model="vm.professional.address.district"/>
+            </div>
+
+            <div class="form-group form-group col-xs-12 col-sm-6">
+                <label class="control-label" data-translate="homedicalApp.professional.city"
+                       for="field_city">Cidade</label>
+
+                <input selectize="{maxItems: 1, labelField: 'name', searchField: 'name', renderize: true}"
+                       selectize-render="vm.rendercity(item, escape)"
+                       selectize-load-data="vm.loadcity(query, callback)"
+                       selectize-on-select="vm.citiesSelected(id, model, address)"
+                       selectize-update-event="reload.cities"
+                       selectize-label-type="disable"
+                       selectize-initial-data="vm.cities"
+                       selectize-initial-data-load="true"
+                       selectize-initial-data-load-index="[vm.professional.address.city]"
+                       id="field_city"
+                       name="city"
+                       placeholder="{{ 'homedicalApp.professional.cityPlaceholder' | translate}}"
+                       required>
+
+                <div>
+                    <p class="help-block"
+                       data-translate="entity.validation.required">
+                        This field is required.
+                    </p>
+                </div>
+
+            </div>
+
+
+        </div>
+
+        <div class="form-footer">
+            <!-- botões -->
+            <div class="row row-form">
+                <div class="col-xs-12 text-right">
+                    <!-- cancelar -->
+                    <button class="btn btn-link"
+                            type="button"
+                            data-dismiss="modal"
+                            ng-click="vm.clear()">
+                        <span data-translate="entity.action.cancel">Cancel</span>
+                    </button>
+                    <!-- end cancelar -->
+
+                    <!-- salvar -->
+                    <button class="btn-save"
+                            type="submit"
+                            ng-disabled="editForm.$invalid || vm.isSaving">
+                        <span data-translate="entity.action.save">Save</span>
+                    </button>
+                    <!-- end salvar -->
+                </div>
+            </div>
+            <!-- end botões -->
+        </div>
+    </form>
+</div>

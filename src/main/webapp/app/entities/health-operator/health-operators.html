@@ -1,0 +1,71 @@
+<div class="content content-bg">
+
+    <jhi-alert></jhi-alert>
+    <div class="list-header">
+        <div class="col-xs-12 col-sm-8 col-left">
+            <h2 data-translate="homedicalApp.healthOperator.home.title">Health Operators</h2>
+            <button class="btn-new hidden-xs" ui-sref="health-operator.new">
+                <span data-translate="homedicalApp.healthOperator.home.createLabel">
+                    Create new Health Operator
+                </span>
+            </button>
+            <button class="btn-new hidden-sm hidden-md hidden-lg pull-right" ui-sref="health-operator.new">
+                <span data-translate="homedicalApp.healthOperator.home.createLabel">
+                    <span class="fa fa-plus"></span>
+                </span>
+            </button>
+        </div>
+
+    </div>
+
+
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+            <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span
+                    class="glyphicon glyphicon-sort"></span></th>
+                <th jh-sort-by="ansRegister"><span
+                    data-translate="homedicalApp.healthOperator.ansRegister">Ans Register</span> <span
+                    class="glyphicon glyphicon-sort"></span></th>
+                <th jh-sort-by="socialReason"><span data-translate="homedicalApp.healthOperator.socialReason">Social Reason</span>
+                    <span class="glyphicon glyphicon-sort"></span></th>
+                <th jh-sort-by="obs"><span data-translate="homedicalApp.healthOperator.obs">Obs</span> <span
+                    class="glyphicon glyphicon-sort"></span></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="healthOperator in vm.healthOperators track by healthOperator.id">
+                <td><a ui-sref="health-operator-detail({id:healthOperator.id})">{{healthOperator.id}}</a></td>
+                <td>{{healthOperator.ansRegister}}</td>
+                <td>{{healthOperator.socialReason}}</td>
+                <td>{{healthOperator.obs}}</td>
+                <td class="text-right list-buttons">
+                    <button type="submit"
+                            ui-sref="health-operator-detail({id:healthOperator.id})"
+                            class="btn btn-info btn-sm">
+                        <span class="glyphicon glyphicon-eye-open"></span>
+                    </button>
+                    <button type="submit"
+                            ui-sref="health-operator.edit({id:healthOperator.id})"
+                            class="btn btn-primary btn-sm">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </button>
+                    <button type="submit"
+                            ui-sref="health-operator.delete({id:healthOperator.id})"
+                            class="btn btn-danger btn-sm">
+                        <span class="glyphicon glyphicon-remove-circle"></span>
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <!-- <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count> -->
+        <uib-pagination class="list-pagination pagination-sm" total-items="vm.totalItems"
+                        items-per-page="vm.itemsPerPage" ng-model="vm.page"
+                        ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>

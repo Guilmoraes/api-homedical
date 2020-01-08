@@ -1,0 +1,23 @@
+{
+    "homedicalApp": {
+        "healthOperator": {
+            "home": {
+                "title": "Health Operators",
+                "createLabel": "Criar novo Health Operator",
+                "createOrEditLabel": "Criar ou editar Health Operator"
+            },
+            "created": "Um novo Health Operator foi criado com o identificador {{ param }}",
+            "updated": "Um Health Operator foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Health Operator foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Health Operator {{ id }}?"
+            },
+            "detail": {
+                "title": "Health Operator"
+            },
+            "ansRegister": "Ans Register",
+            "socialReason": "Social Reason",
+            "obs": "Obs"
+        }
+    }
+}

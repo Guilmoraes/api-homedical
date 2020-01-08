@@ -1,0 +1,63 @@
+<div class="content content-bg">
+    <jhi-alert></jhi-alert>
+    <div class="list-header">
+        <div class="col-xs-12 col-sm-8 col-left">
+            <h2 data-translate="homedicalApp.schedule.schedulesPending">Schedules</h2>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+            <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                <th jh-sort-by="id"><span data-translate="homedicalApp.schedule.scheduleImages">Schedule Images</span></th>
+                <th jh-sort-by="id"><span data-translate="homedicalApp.schedule.professional.name">Name</span> <span
+                    class="glyphicon glyphicon-sort"></span></th>
+                <th jh-sort-by="id"><span data-translate="homedicalApp.schedule.patient.nameOfPatient">Name</span> <span
+                    class="glyphicon glyphicon-sort"></span></th>
+                <th jh-sort-by="start"><span data-translate="homedicalApp.schedule.start">Start</span> <span
+                    class="glyphicon glyphicon-sort"></span></th>
+                <th jh-sort-by="finish"><span data-translate="homedicalApp.schedule.finish">Finish</span> <span
+                    class="glyphicon glyphicon-sort"></span></th>
+                <th jh-sort-by="status"><span data-translate="homedicalApp.schedule.status">Status</span> <span
+                    class="glyphicon glyphicon-sort"></span></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="schedule in vm.schedules track by schedule.id">
+                <td>
+                    <div ng-repeat="scheduleImage in schedule.scheduleImages track by scheduleImage.id" class="thumbnail-container">
+                        <img src="{{scheduleImage.url}}" class="thumbnail-schedule-image" />
+                    </div>
+                    <span ng-show="schedule.scheduleImages != null && schedule.scheduleImages.length === 0" data-translate="homedicalApp.schedule.noHasImage">None</span>
+                </td>
+                <td>{{schedule.professional.name}}</td>
+                <td>{{schedule.patient.name}}</td>
+                <td>{{schedule.start | utcToLocal}}</td>
+                <td>{{schedule.finish | utcToLocal}}</td>
+                <td data-translate="{{'homedicalApp.SchedulesStatus.' + schedule.status}}">{{schedule.status}}</td>
+                <td class="text-right list-buttons icon-container">
+                    <button type="button"
+                            class="btn btn-success btn-sm"
+                            ng-click="vm.goToImage(schedule)"
+                    >
+                        <span class="glyphicon glyphicon-file"></span>
+                    </button>
+                    <button type="button"
+                            class="btn btn-success btn-sm"
+                            ng-click="vm.approved(schedule)"
+                    >
+                        <span class="glyphicon glyphicon-ok"></span>
+                    </button>
+                    <button type="button"
+                            class="btn btn-danger btn-sm"
+                            ng-click="vm.refused(schedule)"
+                    >
+                        <span class="glyphicon glyphicon-ban-circle"></span>
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

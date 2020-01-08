@@ -1,0 +1,72 @@
+<div class="content content-bg">
+
+    <jhi-alert></jhi-alert>
+    <div class="list-header">
+        <div class="col-xs-12 col-sm-8 col-left">
+            <h2 data-translate="homedicalApp.address.home.title">Addresses</h2>
+            <button class="btn-new hidden-xs" ui-sref="address.new" >
+                <span  data-translate="homedicalApp.address.home.createLabel">
+                    Create new Address
+                </span>
+            </button>
+            <button class="btn-new hidden-sm hidden-md hidden-lg pull-right" ui-sref="address.new" >
+                <span  data-translate="homedicalApp.address.home.createLabel">
+                    <span class="fa fa-plus"></span>
+                </span>
+            </button>
+        </div>
+
+    </div>
+
+
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="street"><span data-translate="homedicalApp.address.street">Street</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="number"><span data-translate="homedicalApp.address.number">Number</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="zipcode"><span data-translate="homedicalApp.address.zipcode">Zipcode</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="district"><span data-translate="homedicalApp.address.district">District</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="complement"><span data-translate="homedicalApp.address.complement">Complement</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="city.id"><span data-translate="homedicalApp.address.city">City</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="address in vm.addresses track by address.id">
+                    <td><a ui-sref="address-detail({id:address.id})">{{address.id}}</a></td>
+                    <td>{{address.street}}</td>
+                    <td>{{address.number}}</td>
+                    <td>{{address.zipcode}}</td>
+                    <td>{{address.district}}</td>
+                    <td>{{address.complement}}</td>
+                    <td>
+                        <a ui-sref="city-detail({id:address.city.id})">{{address.city.id}}</a>
+                    </td>
+                    <td class="text-right list-buttons">
+                        <button type="submit"
+                                ui-sref="address-detail({id:address.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="address.edit({id:address.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="address.delete({id:address.id})"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <!-- <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count> -->
+        <uib-pagination class="list-pagination pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="filiipake (generated)" id="1521219749955-1">
+        <addColumn tableName="patient">
+            <column name="health_operator_id" type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="filiipake (generated)" id="1521219749955-2">
+        <addForeignKeyConstraint baseColumnNames="health_operator_id" baseTableName="patient"
+                                 constraintName="FKjep1jxphhv3trrsiwticaiimw" deferrable="false"
+                                 initiallyDeferred="false" referencedColumnNames="id"
+                                 referencedTableName="health_operator"/>
+    </changeSet>
+    <changeSet author="filiipake (generated)" id="1521219749955-3">
+        <dropColumn columnName="health_operator" tableName="patient"/>
+    </changeSet>
+</databaseChangeLog>

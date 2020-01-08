@@ -1,0 +1,25 @@
+{
+    "homedicalApp": {
+        "duty": {
+            "home": {
+                "title": "Duties",
+                "createLabel": "Create a new Duty",
+                "createOrEditLabel": "Create or edit a Duty"
+            },
+            "created": "A new Duty is created with identifier {{ param }}",
+            "updated": "A Duty is updated with identifier {{ param }}",
+            "deleted": "A Duty is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Duty {{ id }}?"
+            },
+            "detail": {
+                "title": "Duty"
+            },
+            "name": "Name",
+            "start": "Start",
+            "finish": "Finish",
+            "range": "Range",
+            "professional": "Professional"
+        }
+    }
+}

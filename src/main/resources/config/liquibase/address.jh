@@ -1,0 +1,46 @@
+entity Country {
+	name String,
+    acronym String
+}
+
+entity State {
+	name String,
+    acronym String,
+    active Boolean
+}
+
+entity City {
+	name String,
+	active Boolean
+}
+
+entity Address {
+	street String,
+    number String,
+    zipcode String,
+    district String,
+    complement String
+}
+
+entity Phone {
+	areaCode Integer,
+    number String,
+    type PhoneType
+}
+
+enum PhoneType {
+	HOME, PROFESSIONAL, CELLULAR, OTHER
+}
+
+relationship ManyToOne {
+	Address{city} to City,
+    City{state} to State,
+    State{country} to Country
+}
+
+dto * with mapstruct
+
+service * with serviceClass
+
+paginate * with pagination
+

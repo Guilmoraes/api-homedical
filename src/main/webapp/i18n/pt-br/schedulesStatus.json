@@ -1,0 +1,10 @@
+{
+    "homedicalApp": {
+        "SchedulesStatus": {
+            "null": "Selecione...",
+            "APPROVED": "Aprovado",
+            "PENDING": "Pendente",
+            "REFUSED": "Recusado"
+        }
+    }
+}

@@ -1,0 +1,8 @@
+{
+    "homedicalApp": {
+        "NotificationSourceType" : {
+            "null": "",
+            "USER": "USER"
+        }
+    }
+}

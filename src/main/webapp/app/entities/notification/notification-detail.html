@@ -1,0 +1,48 @@
+
+<div class="content content-bg view-page">
+    <h2 class="form-section"><span data-translate="homedicalApp.notification.detail.title">Notification</span> {{vm.notification.id}}</h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <div class="row row-form">
+        <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="homedicalApp.notification.type">Type</span></dt>
+        <dd>
+            <span data-translate="{{'homedicalApp.NotificationType.' + vm.notification.type}}">{{vm.notification.type}}</span>
+        </dd>
+        <dt><span data-translate="homedicalApp.notification.sourceId">Source Id</span></dt>
+        <dd>
+            <span>{{vm.notification.sourceId}}</span>
+        </dd>
+        <dt><span data-translate="homedicalApp.notification.sourceType">Source Type</span></dt>
+        <dd>
+            <span data-translate="{{'homedicalApp.NotificationSourceType.' + vm.notification.sourceType}}">{{vm.notification.sourceType}}</span>
+        </dd>
+        <dt><span data-translate="homedicalApp.notification.pending">Pending</span></dt>
+        <dd>
+            <span>{{vm.notification.pending}}</span>
+        </dd>
+        <dt><span data-translate="homedicalApp.notification.executionDate">Execution Date</span></dt>
+        <dd>
+            <span>{{vm.notification.executionDate | date:'medium'}}</span>
+        </dd>
+    </dl>
+
+    </div>
+
+    <div class="form-footer">
+        <div class="row row-form">
+          <div class="col-lg-12 text-right">
+            <button ui-sref="^"
+                    class="btn btn-link">
+              <span data-translate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button" ui-sref="notification.edit({id:vm.notification.id})" class="btn btn-primary">
+              <span data-translate="entity.action.edit"> Edit</span>
+            </button>
+          </div>
+        </div>
+    </div>
+
+</div>

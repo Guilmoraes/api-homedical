@@ -1,0 +1,13 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="filiipake" id="20180612113042-1">
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/patient_phone.csv"
+                  separator=";"
+                  tableName="phone">
+            <column name="created_date" type="DATE" defaultValue="now()"/>
+        </loadData>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,1 @@
+INSERT INTO document_type (id, name, required, created_by, created_date, last_modified_by, last_modified_date) VALUES ('b62bc22f-621d-4089-b294-bd9a08268e02', 'CPF', 1,  'admin', '2018-03-17 13:38:17', 'admin', '2018-03-17 13:38:17');

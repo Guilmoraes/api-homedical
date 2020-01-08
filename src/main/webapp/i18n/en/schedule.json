@@ -1,0 +1,24 @@
+{
+    "homedicalApp": {
+        "schedule": {
+            "home": {
+                "title": "Schedules",
+                "createLabel": "Create a new Schedule",
+                "createOrEditLabel": "Create or edit a Schedule"
+            },
+            "created": "A new Schedule is created with identifier {{ param }}",
+            "noHasImage": "Nenhum",
+            "updated": "A Schedule is updated with identifier {{ param }}",
+            "deleted": "A Schedule is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Schedule {{ id }}?"
+            },
+            "detail": {
+                "title": "Schedule"
+            },
+            "start": "Start",
+            "finish": "Finish",
+            "status": "Status"
+        }
+    }
+}

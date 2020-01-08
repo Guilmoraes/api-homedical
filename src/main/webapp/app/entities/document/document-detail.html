@@ -1,0 +1,42 @@
+
+<div class="content content-bg view-page">
+    <h2 class="form-section"><span data-translate="homedicalApp.document.detail.title">Document</span>: {{vm.document.type.name}}</h2>
+
+    <div class="row row-form">
+        <dl class="dl-horizontal jh-entity-details">
+            <dt><span data-translate="homedicalApp.document.status">Status</span></dt>
+            <dd>
+                <span data-translate="{{ vm.document.status ? 'homedicalApp.document.' + vm.document.status: ''}}">{{vm.document.status}}</span>
+            </dd>
+            <dt><span data-translate="homedicalApp.document.fileName">File Name</span></dt>
+            <dd>
+                <span>{{vm.document.fileName}}</span>
+            </dd>
+            <dt><span data-translate="homedicalApp.document.type">Type</span></dt>
+            <dd>
+                <span>{{vm.document.type.name}}</span>
+            </dd>
+            <dt><span data-translate="homedicalApp.document.file">File</span></dt>
+            <dd>
+            <div>
+                <span class="glyphicon glyphicon-file pull-left"></span>
+                <a ng-if="!vm.document.file" href="{{ vm.document.url }}" data-translate="entity.action.open">open</a>
+                <a ng-if="vm.document.file" ng-click="vm.openFile(vm.document.fileContentType, vm.document.file)" data-translate="entity.action.open">open</a>
+                <span ng-if="vm.document.file" >{{vm.document.fileContentType}}, {{vm.byteSize(vm.document.file)}}</span>
+            </div>
+            </dd>
+        </dl>
+    </div>
+
+    <div class="form-footer">
+        <div class="row row-form">
+          <div class="col-lg-12 text-right">
+            <button ui-sref="^"
+                    class="btn btn-link">
+              <span data-translate="entity.action.back">Back</span>
+            </button>
+          </div>
+        </div>
+    </div>
+
+</div>

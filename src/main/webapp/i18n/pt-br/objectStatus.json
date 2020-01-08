@@ -1,0 +1,9 @@
+{
+    "homedicalApp": {
+        "ObjectStatus" : {
+            "null": "",
+            "ENABLED": "Ativa",
+            "DISABLED": "Desativada"
+        }
+    }
+}

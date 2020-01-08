@@ -1,0 +1,46 @@
+<div class="content content-bg view-page">
+    <h2 class="form-section"><span data-translate="homedicalApp.professional.detail.title">Professional</span>
+        {{vm.professional.name}}</h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <div class="row row-form">
+        <dl class="dl-horizontal jh-entity-details">
+            <dt><span data-translate="homedicalApp.professional.name">Name</span></dt>
+            <dd>
+                <span>{{vm.professional.name}}</span>
+            </dd>
+            <dt><span data-translate="homedicalApp.professional.email">Email</span></dt>
+            <dd>
+                {{vm.professional.user.email}}
+            </dd>
+            <dt><span data-translate="homedicalApp.professional.cpf">Cpf</span></dt>
+            <dd>
+                {{vm.professional.cpf}}
+            </dd>
+            <dt><span data-translate="homedicalApp.professional.specialties">Especialidades</span></dt>
+            <dd>
+                <span ng-repeat="specialties in vm.professional.specialties">
+                    <span>{{specialties.name}}{{$last ? '' : ', '}}</span>
+                </span>
+            </dd>
+            <dt><span data-translate="homedicalApp.professional.phone">Especialidades</span></dt>
+            <dd>
+                {{vm.professional.phone.number}}
+            </dd>
+        </dl>
+
+    </div>
+
+    <div class="form-footer">
+        <div class="row row-form">
+            <div class="col-lg-12 text-right">
+                <button ui-sref="^"
+                        class="btn btn-link">
+                    <span data-translate="entity.action.back">Back</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+</div>

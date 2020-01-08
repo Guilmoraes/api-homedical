@@ -1,0 +1,68 @@
+
+<div class="content content-bg">
+  <form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <h4 class="form-section" id="mySpecialtyLabel" data-translate="homedicalApp.specialty.home.createOrEditLabel">Create or edit a Specialty</h4>
+
+    <div class="row row-form">
+
+        <div class="form-group form-group col-xs-12 col-sm-6">
+            <label class="control-label" data-translate="homedicalApp.specialty.name" for="field_name">Name</label>
+            <input type="text"
+                   class="form-control"
+                   name="name"
+                   id="field_name"
+                   ng-maxlength="255"
+                   ng-model="vm.specialty.name"
+                   required/>
+            <div ng-show="editForm.name.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.name.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group form-group col-xs-12 col-sm-6">
+            <label class="control-label" data-translate="homedicalApp.specialty.status" for="field_status">Status</label>
+            <select class="form-control" name="status" ng-model="vm.specialty.status" id="field_status" required>
+                <option value="ENABLED" data-translate="homedicalApp.ObjectStatus.ENABLED">ENABLED</option>
+                <option value="DISABLED" data-translate="homedicalApp.ObjectStatus.DISABLED">DISABLED</option>
+            </select>
+            <div ng-show="editForm.status.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.status.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="form-footer">
+      <!-- botões -->
+      <div class="row row-form">
+        <div class="col-xs-12 text-right">
+          <!-- cancelar -->
+          <button class="btn btn-link"
+                  type="button"
+                  data-dismiss="modal"
+                  ng-click="vm.clear()">
+            <span data-translate="entity.action.cancel">Cancel</span>
+          </button>
+          <!-- end cancelar -->
+
+          <!-- salvar -->
+          <button class="btn-save"
+                  type="submit"
+                  ng-disabled="editForm.$invalid || vm.isSaving">
+            <span data-translate="entity.action.save">Save</span>
+          </button>
+          <!-- end salvar -->
+        </div>
+      </div>
+      <!-- end botões -->
+    </div>
+  </form>
+</div>

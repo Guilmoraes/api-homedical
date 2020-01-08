@@ -1,0 +1,337 @@
+import groovy.json.JsonSlurper
+import org.gradle.internal.os.OperatingSystem
+
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        jcenter()
+        maven { url "http://repo.spring.io/plugins-release" }
+        maven { url "http://repo.spring.io/milestone" }
+        maven { url "http://download.osgeo.org/webdav/geotools/" }
+        maven { url "http://repo.boundlessgeo.com/main/" }
+        maven { url "http://download.osgeo.org/webdav/geotools" }
+        maven { url "http://repo.opengeo.org" }
+        maven { url "https://repository.jboss.org/nexus/content/repositories/thirdparty-releases/" }
+        maven { url 'http://download.osgeo.org/webdav/geotools/' }
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
+    dependencies {
+        classpath "gradle.plugin.com.ewerk.gradle.plugins:querydsl-plugin:1.0.9"
+        classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.5"
+        classpath "net.ltgt.gradle:gradle-apt-plugin:0.10"
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:${spring_boot_version}"
+        classpath "org.springframework.build.gradle:propdeps-plugin:0.0.7"
+        classpath "com.moowork.gradle:gradle-node-plugin:1.2.0"
+        classpath "io.spring.gradle:dependency-management-plugin:0.6.1.RELEASE"
+        //jhipster-needle-gradle-buildscript-dependency - JHipster will add additional gradle build script plugins here
+    }
+}
+
+allprojects {
+    apply plugin: 'idea'
+    idea {
+        module {
+            outputDir file('build/classes/main')
+            testOutputDir file('build/classes/test')
+        }
+    }
+    if(project.convention.findPlugin(JavaPluginConvention)) {
+        // Change the output directory for the main and test source sets back to the old path
+        sourceSets.main.output.classesDir = new File(buildDir, "classes/main")
+        sourceSets.test.output.classesDir = new File(buildDir, "classes/test")
+    }
+}
+
+apply plugin: "com.ewerk.gradle.plugins.querydsl"
+apply plugin: 'java'
+sourceCompatibility=1.8
+targetCompatibility=1.8
+apply plugin: 'maven'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'war'
+apply plugin: 'propdeps'
+apply plugin: 'com.moowork.node'
+apply plugin: 'com.moowork.gulp'
+apply plugin: 'io.spring.dependency-management'
+defaultTasks 'bootRun'
+
+bootRepackage {
+   mainClass = 'br.com.homedical.HomedicalApp'
+}
+
+war {
+    archiveName "HomedicalApp.war"
+}
+
+springBoot {
+    mainClass = 'br.com.homedical.HomedicalApp'
+    executable = true
+    buildInfo()
+}
+
+if (OperatingSystem.current().isWindows()) {
+    task pathingJar(type: Jar) {
+        dependsOn configurations.runtime
+        appendix = 'pathing'
+
+        doFirst {
+            manifest {
+                attributes 'Class-Path': configurations.runtime.files.collect {
+                    it.toURL().toString().replaceFirst(/file:\/+/, '/').replaceAll(' ', '%20')
+                }.join(' ')
+            }
+        }
+    }
+
+    bootRun {
+        addResources = false
+        dependsOn pathingJar
+        doFirst {
+            classpath = files("$buildDir/classes/main", "$buildDir/resources/main", pathingJar.archivePath)
+        }
+    }
+} else {
+    bootRun {
+        addResources = false
+    }
+}
+
+test {
+    include '**/*UnitTest*'
+    include '**/*IntTest*'
+
+    // uncomment if the tests reports are not generated
+    // see https://github.com/jhipster/generator-jhipster/pull/2771 and https://github.com/jhipster/generator-jhipster/pull/4484
+    // ignoreFailures true
+    reports.html.enabled = false
+}
+
+task testReport(type: TestReport) {
+    destinationDir = file("$buildDir/reports/tests")
+    reportOn test
+}
+
+
+apply from: 'gradle/yeoman.gradle'
+apply from: 'gradle/sonar.gradle'
+apply from: 'gradle/liquibase.gradle'
+apply from: 'gradle/mapstruct.gradle'
+apply from: 'gradle/docker.gradle'
+//jhipster-needle-gradle-apply-from - JHipster will add additional gradle scripts to be applied here
+
+if (project.hasProperty('prod')) {
+    apply from: 'gradle/profile_prod.gradle'
+} else {
+    apply from: 'gradle/profile_dev.gradle'
+}
+
+if (project.hasProperty('graphite')) {
+    apply from: 'gradle/graphite.gradle'
+}
+
+if (project.hasProperty('prometheus')) {
+    apply from: 'gradle/prometheus.gradle'
+}
+
+group = 'br.com.homedical'
+version = '0.0.1-SNAPSHOT'
+
+description = ''
+
+configurations {
+    providedRuntime
+    compile.exclude module: "spring-boot-starter-tomcat"
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    jcenter()
+    maven { url 'http://repo.spring.io/milestone' }
+    maven { url 'http://repo.spring.io/snapshot' }
+    maven { url 'https://repository.jboss.org/nexus/content/repositories/releases' }
+    maven { url 'https://oss.sonatype.org/content/repositories/releases' }
+    maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+    maven { url 'http://repo.maven.apache.org/maven2' }
+}
+
+dependencies {
+    compile "io.github.jhipster:jhipster:${jhipster_server_version}"
+    compile "io.dropwizard.metrics:metrics-core:${dropwizard_metrics_version}"
+    compile "io.dropwizard.metrics:metrics-jcache:${dropwizard_metrics_version}"
+    compile "io.dropwizard.metrics:metrics-jvm:${dropwizard_metrics_version}"
+    compile "io.dropwizard.metrics:metrics-servlet:${dropwizard_metrics_version}"
+    compile "io.dropwizard.metrics:metrics-json:${dropwizard_metrics_version}"
+    compile "io.dropwizard.metrics:metrics-servlets:${dropwizard_metrics_version}"
+    compile ("net.logstash.logback:logstash-logback-encoder:${logstash_logback_encoder_version}") {
+        exclude(group: 'ch.qos.logback')
+    }
+    compile "com.fasterxml.jackson.datatype:jackson-datatype-json-org"
+    compile "com.fasterxml.jackson.datatype:jackson-datatype-hppc"
+    compile "com.fasterxml.jackson.datatype:jackson-datatype-jsr310"
+    compile "com.fasterxml.jackson.datatype:jackson-datatype-hibernate5"
+    compile "com.fasterxml.jackson.core:jackson-annotations"
+    compile "com.fasterxml.jackson.core:jackson-databind"
+    compile "com.fasterxml.jackson.module:jackson-module-afterburner"
+    compile ("com.ryantenney.metrics:metrics-spring:${metrics_spring_version}")
+    compile "javax.cache:cache-api"
+    compile "org.hibernate:hibernate-core:${hibernate_version}"
+    compile ("com.zaxxer:HikariCP:${hikaricp_version}")
+    compile "org.apache.commons:commons-lang3:${commons_lang_version}"
+    compile "commons-io:commons-io:${commons_io_version}"
+    compile "javax.transaction:javax.transaction-api"
+    compile "org.ehcache:ehcache"
+    compile "org.hibernate:hibernate-jcache:${hibernate_version}"
+    compile "org.hibernate:hibernate-envers:${hibernate_version}"
+    compile "org.hibernate:hibernate-validator"
+    compile "org.hibernate:hibernate-entitymanager:${hibernate_version}"
+    compile ("org.liquibase:liquibase-core")
+    compile "com.mattbertolini:liquibase-slf4j:${liquibase_slf4j_version}"
+    compile "org.springframework.boot:spring-boot-actuator"
+    compile "org.springframework.boot:spring-boot-autoconfigure"
+    compile "org.springframework.boot:spring-boot-loader-tools"
+    compile "org.springframework.boot:spring-boot-starter-mail"
+    compile "org.springframework.boot:spring-boot-starter-logging"
+    compile "org.springframework.boot:spring-boot-starter-aop"
+    compile "org.springframework.boot:spring-boot-starter-data-jpa"
+    compile "org.springframework.boot:spring-boot-starter-security"
+    compile ("org.springframework.boot:spring-boot-starter-web") {
+        exclude module: 'spring-boot-starter-tomcat'
+    }
+    compile "org.springframework.boot:spring-boot-starter-undertow"
+    //compile "org.springframework.boot:spring-boot-starter-thymeleaf"
+    compile "org.springframework.boot:spring-boot-starter-cloud-connectors"
+    compile ("org.springframework:spring-context-support")
+    compile "org.springframework.security:spring-security-config"
+    compile "org.springframework.security:spring-security-data"
+    compile "org.springframework.security:spring-security-web"
+    compile "io.jsonwebtoken:jjwt:${jjwt_version}"
+    compile ("io.springfox:springfox-swagger2:${springfox_version}") {
+        exclude module: 'mapstruct'
+    }
+    compile "io.springfox:springfox-bean-validators:${springfox_version}"
+    compile "mysql:mysql-connector-java"
+    compile "org.mapstruct:mapstruct-jdk8:${mapstruct_version}"
+    testCompile "org.awaitility:awaitility:${awaitility_version}"
+    testCompile "com.jayway.jsonpath:json-path"
+    testCompile ("org.springframework.boot:spring-boot-starter-test") {
+        exclude group: 'com.vaadin.external.google', module: 'android-json'
+    }
+    testCompile "org.springframework.security:spring-security-test"
+    testCompile "org.springframework.boot:spring-boot-test"
+    testCompile "org.assertj:assertj-core:${assertj_version}"
+    testCompile "junit:junit"
+    testCompile "org.mockito:mockito-core"
+    testCompile "com.mattbertolini:liquibase-slf4j:${liquibase_slf4j_version}"
+    testCompile "org.hamcrest:hamcrest-library"
+    testCompile "com.h2database:h2"
+    optional ("org.springframework.boot:spring-boot-configuration-processor:${spring_boot_version}") {
+        exclude group: 'com.vaadin.external.google', module: 'android-json'
+    }
+    //jhipster-needle-gradle-dependency - JHipster will add additional dependencies here
+
+    compile group: 'com.google.code.gson', name: 'gson', version: '2.5'
+    compile group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
+
+//    compile 'com.amazonaws:aws-java-sdk-s3'
+    compile group: 'org.imgscalr', name: 'imgscalr-lib', version: '4.2'
+
+    compile 'org.springframework.data:spring-data-envers:1.1.1.RELEASE'
+
+    compile group: 'org.hibernate', name: 'hibernate-envers', version: '5.2.4.Final'
+
+    compile group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: '2.8.1'
+    compile "de.grundid.opendatalab:geojson-jackson:1.6"
+    compile 'com.bedatadriven:jackson-datatype-jts:2.2'
+
+    compile group: 'com.spatial4j', name: 'spatial4j', version: '0.5'
+    compile("com.vividsolutions:jts:1.13") {
+        exclude module: 'xercesImpl'
+    }
+
+    compile group: 'br.com.caelum.stella', name: 'caelum-stella-core', version: '2.1.2'
+    compile group: 'io.jsonwebtoken', name: 'jjwt', version: '0.7.0'
+
+    compile group: 'org.thymeleaf', name: 'thymeleaf', version: '3.0.0.RELEASE'
+    compile group: 'org.thymeleaf', name: 'thymeleaf-spring4', version: '3.0.0.RELEASE'
+    compile group: 'org.thymeleaf.extras', name: 'thymeleaf-extras-java8time', version: '3.0.0.RELEASE'
+
+    compile group: 'com.querydsl', name: 'querydsl-jpa', version: '4.1.4'
+    compile group: 'com.querydsl', name: 'querydsl-sql-codegen', version: '4.1.4'
+    compile group: 'com.querydsl', name: 'querydsl-sql', version: '4.1.4'
+    compile group: 'com.querydsl', name: 'querydsl-sql-spring', version: '4.1.4'
+    
+    compile group: 'com.xebia', name: 'jackson-lombok', version: '1.1'
+    compile "org.projectlombok:lombok:${lombok_version}"
+
+    apt "org.projectlombok:lombok:${lombok_version}"
+
+    compile("org.springframework.boot:spring-boot-starter-artemis")
+    compile("org.apache.activemq:artemis-jms-server")
+
+    compile 'com.amazonaws:aws-java-sdk:1.11.254'
+    compile 'com.amazonaws:aws-java-sdk-s3:1.11.254'
+    compile('org.springframework.cloud:spring-cloud-starter-aws')
+    compile('org.springframework.cloud:spring-cloud-starter-aws-jdbc')
+
+    compile "org.springframework.cloud:spring-cloud-aws-context:1.2.2.RELEASE"
+    compile group: 'org.springframework.cloud', name: 'spring-cloud-aws-context', version: '1.2.2.RELEASE'
+
+    compile 'com.google.maps:google-maps-services:0.2.5'
+
+}
+
+
+sourceSets {
+    main {
+        java {
+            srcDir "src/querydsl/java/"
+        }
+    }
+}
+
+querydsl {
+    jpa = true
+}
+
+
+ext {
+    springCloudVersion = 'Edgware.SR1'
+}
+
+dependencyManagement {
+    imports {
+        mavenBom 'com.amazonaws:aws-java-sdk-bom:1.11.254'
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}
+
+clean {
+    delete "target"
+}
+
+task cleanResources(type: Delete) {
+    delete 'build/resources'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.0'
+}
+
+task stage(dependsOn: 'bootRepackage') {
+}
+
+if (project.hasProperty('nodeInstall')) {
+    node {
+        version = "${node_version}"
+        npmVersion = "${npm_version}"
+        yarnVersion = "${yarn_version}"
+        download = true
+    }
+}
+
+compileJava.dependsOn processResources
+processResources.dependsOn cleanResources,bootBuildInfo
+bootBuildInfo.mustRunAfter cleanResources

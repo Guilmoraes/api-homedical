@@ -1,0 +1,38 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "url",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "fileName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "s3Name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "file",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
+        },
+        {
+            "fieldName": "processed",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "type",
+            "fieldType": "DocumentType",
+            "fieldValues": "DOCUMENT"
+        }
+    ],
+    "changelogDate": "20180309192539",
+    "dto": "mapstruct",
+    "service": "serviceImpl",
+    "facadeForService": "facadeClass",
+    "entityTableName": "document",
+    "pagination": "pagination"
+}

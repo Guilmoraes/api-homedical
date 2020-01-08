@@ -1,0 +1,46 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "relationshipType": "one-to-one",
+            "selectize": false,
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "login",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "professional"
+        },
+        {
+            "relationshipName": "specialty",
+            "otherEntityName": "specialty",
+            "relationshipType": "many-to-many",
+            "selectize": true,
+            "selectizeRender": false,
+            "selectizeCreate": false,
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "name",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "professional"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20180309142344",
+    "dto": "mapstruct",
+    "service": "serviceImpl",
+    "facadeForService": "facadeClass",
+    "entityTableName": "professional",
+    "pagination": "pagination"
+}

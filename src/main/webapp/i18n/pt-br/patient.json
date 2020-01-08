@@ -1,0 +1,40 @@
+{
+    "homedicalApp": {
+        "patient": {
+            "home": {
+                "title": "Pacientes",
+                "createLabel": "Criar novo Paciente",
+                "createOrEditLabel": "Criar ou editar Paciente"
+            },
+            "created": "Um novo Paciente foi criado com o identificador {{ param }}",
+            "updated": "Um Paciente foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Paciente foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Paciente {{ name }}?"
+            },
+            "detail": {
+                "title": "Paciente"
+            },
+            "name": "Nome Completo",
+            "birthdate": "Data de Nascimento",
+            "clinicalCondition": "Quadro Clínico",
+            "healthOperator": "Operador de Saúde",
+            "phone": "Telefone",
+            "address": "Endereço",
+            "selectAddress": "Selecionar Endereço",
+            "buttonSelectAddress": "Selecionar",
+            "addressPlaceholder": "Endereço",
+            "healthOperatorPlaceholder": "Operador de Saúde",
+            "birthdatePlaceholder": "Digite a data de nascimento",
+            "namePlaceholder": "Digite o Nome Completo",
+            "phonePlaceholder": "Digite o Telefone",
+            "successMessage": "Paciente Salvo com Sucesso!",
+            "errors": {
+                "selectHealthOperator": "Selecione um Operador de Saúde!"
+            },
+            "buttons": {
+                "searchAddress": "Procurar Endereço"
+            }
+        }
+    }
+}

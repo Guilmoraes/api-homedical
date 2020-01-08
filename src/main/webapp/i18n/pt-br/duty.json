@@ -1,0 +1,33 @@
+{
+    "homedicalApp": {
+        "duty": {
+            "home": {
+                "title": "Plantão",
+                "createLabel": "Criar novo Plantão",
+                "createOrEditLabel": "Criar ou editar Plantão"
+            },
+            "created": "Um novo Plantão foi criado",
+            "updated": "Um Plantão foi atualizado",
+            "deleted": "Um Plantão foi deletado",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir o Plantão?"
+            },
+            "detail": {
+                "title": "Plantão"
+            },
+            "name": "Nome",
+            "start": "Inicio",
+            "finish": "Fim",
+            "overtime": "Horas extras",
+            "professional": "Profissional",
+            "price": "Valor",
+            "placeHolder": {
+                "name": "Nome do Plantão",
+                "start": "ex: 13:00",
+                "finish": "ex: 19:00",
+                "overtime": "ex: 00:30",
+                "price": "Valor do Plantão"
+            }
+        }
+    }
+}

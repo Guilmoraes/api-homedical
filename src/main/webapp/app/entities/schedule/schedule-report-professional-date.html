@@ -1,0 +1,137 @@
+<div class="content content-bg">
+    <form name="editForm" role="form" show-validation>
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <h4 class="form-section" id="myDutyLabel" data-translate="global.menu.entities.reports">Create or
+            edit a Duty</h4>
+
+        <div class="row row-form">
+
+            <div class="form-group form-group col-xs-12 col-sm-10">
+                <label class="control-label" data-translate="homedicalApp.schedule.professional.name"
+                       for="field_professional">Professional</label>
+                <input selectize="{maxItems: 1, labelField: 'name', searchField: 'name' }"
+                       selectize-load-data="vm.loadProfessional(query, callback)"
+                       selectize-on-select="vm.professionalSelected(id, model)"
+                       selectize-update-event="reload.professionals"
+                       selectize-label-type="disable"
+                       selectize-initial-data="vm.professionals"
+                       selectize-initial-data-load-index="[vm.professionalsSelected]"
+                       id="field_professional"
+                       name="professionals"
+                       ng-model="professionalsSelected"
+                       placeholder="{{ 'homedicalApp.schedule.placeHolder.name' | translate}}"
+                       required>
+                <div ng-show="editForm.professionals.$invalid">
+                    <p class="help-block"
+                       ng-show="editForm.professionals.$error.required" data-translate="entity.validation.required">
+                        This field is required.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="form-group form-group col-xs-12 col-sm-4">
+
+                <label class="control-label" data-translate="homedicalApp.schedule.start"
+                       for="field_start">Start</label>
+
+                <div class="input-group">
+                    <input id="field_start" type="text" class="form-control" name="start"
+                           datetime-picker="dd/MM/yyyy" enable-time="false" ng-model="vm.start"
+                           ng-change="vm.changed()"
+                           is-open="vm.datePickerOpenStatus.start"
+                           required
+                           placeholder="{{ 'homedicalApp.schedule.placeHolder.start' | translate}}"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default btn-calendar"
+                                ng-click="vm.openCalendar('start')"><i
+                            class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+                <div ng-show="editForm.start.$invalid">
+                    <p class="help-block"
+                       ng-show="editForm.start.$error.required" data-translate="entity.validation.required">
+                        This field is required.
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="form-group form-group col-xs-12 col-sm-4">
+
+                <label class="control-label" data-translate="homedicalApp.schedule.finish"
+                       for="field_finish">Finish</label>
+
+                <div class="input-group">
+                    <input id="field_finish" type="text" class="form-control" name="finish"
+                           datetime-picker="dd/MM/yyyy" enable-time="false" ng-model="vm.finish"
+                           ng-change="vm.changed()"
+                           ui-date-mask
+                           is-open="vm.datePickerOpenStatus.finish"
+                           required
+                           placeholder="{{ 'homedicalApp.schedule.placeHolder.finish' | translate}}"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default btn-calendar" ng-click="vm.openCalendar('finish')"><i
+                            class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+                <div ng-show="editForm.finish.$invalid">
+                    <p class="help-block"
+                       ng-show="editForm.finish.$error.required" data-translate="entity.validation.required">
+                        This field is required.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row row-form">
+            <div class="col-xs-12 col-sm-10 text-right">
+                <button class="btn-save"
+                        type="button"
+                        ng-disabled="editForm.$invalid || vm.isSaving"
+                        ng-click="vm.search()">
+                    <span data-translate="entity.action.search">Search</span>
+                </button>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="jh-table table table-striped" ng-show="vm.verification">
+                <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span data-translate="homedicalApp.schedule.professional.name">Name</span></th>
+                    <th jh-sort-by="start"><span data-translate="homedicalApp.schedule.start">Start</span></th>
+                    <th jh-sort-by="finish"><span data-translate="homedicalApp.schedule.finish">Finish</span></th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="schedule in vm.schedules track by $index">
+                    <td>{{schedule.professional.name}}</td>
+                    <td>{{schedule.start | utcToLocal}}</td>
+                    <td>{{schedule.finish | utcToLocal}}</td>
+                    <td class="text-right list-buttons">
+                        <button type="button"
+                                class="btn btn-success btn-sm"
+                                ng-click="vm.goToCompleteReport(schedule.id)">
+                            <span class="glyphicon glyphicon-file"></span>
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="text-center">
+            <div class="row" ng-if="vm.totalReports">
+                <div class="col-md-12" text-left>
+                    <p class="help-block">
+                        {{'Total de ' + vm.totalReports + (vm.totalReports > 1 ? ' atendimentos encontrados' : ' atendimento encontrado') +
+                        ' com o valor total de ' + (vm.totalPrice | currency) }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

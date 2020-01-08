@@ -1,0 +1,92 @@
+<style>
+
+</style>
+
+<div class="content content-bg">
+    <jhi-alert></jhi-alert>
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-left">
+            <div class="list-header">
+                <div class="col-xs-12 col-sm-8 col-left">
+                    <h2 data-translate="homedicalApp.professional.home.title">Professionals</h2>
+
+                    <button class="btn-new hidden-xs" ui-sref="professional.new">
+                        <span data-translate="homedicalApp.professional.home.createLabel">
+                            Create new Professional
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-5" style="margin-top: 39px;">
+            <div class="row cols-bottom">
+                <div class="col-xs-12 col-sm-8">
+                    <label class="control-label" data-translate="homedicalApp.professional.home.search"
+                           for="field_search">Name</label>
+                    <input type="text"
+                           class="form-control"
+                           name="search"
+                           id="field_search"
+                           placeholder="{{'homedicalApp.professional.home.searchPlaceholder' | translate}}"
+                           ng-maxlength="255"
+                           ng-model="vm.searchValue"/>
+                </div>
+                <div class="col-xs-12 col-sm-4">
+                    <button class="btn-save"
+                            ng-click="vm.search()">
+                        <span data-translate="homedicalApp.professional.buttons.search">Search</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+            <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                <th><span data-translate="homedicalApp.professional.name">Name</span></th>
+                <th><span data-translate="homedicalApp.professional.email">Email</span></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="professional in vm.professionals track by professional.id">
+                <td>{{professional.name}}</td>
+                <td>
+                    {{professional.user.email}}
+                </td>
+                <td class="text-right">
+                    <button type="submit"
+                            ui-sref="professional-duty({id:professional.id})"
+                            class="btn btn-info btn-sm">
+                        <span data-translate="homedicalApp.professional.buttons.duties">Duties</span>
+                    </button>
+                    <button type="submit"
+                            ui-sref="professional-patient({id:professional.id})"
+                            class="btn btn-info btn-sm">
+                        <span data-translate="homedicalApp.professional.buttons.patients">Patients</span>
+                    </button>
+                    <button type="submit"
+                            ui-sref="documents-professional({ id: professional.id, name: professional.name })"
+                            class="btn btn-info btn-sm">
+                        <span data-translate="homedicalApp.professional.buttons.documents">Documents</span>
+                    </button>
+                    <button type="submit"
+                            ui-sref="professional-detail({id:professional.id})"
+                            class="btn btn-info btn-sm">
+                        <span class="glyphicon glyphicon-eye-open"></span>
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <!-- <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count> -->
+        <uib-pagination class="list-pagination pagination-sm" total-items="vm.totalItems"
+                        items-per-page="vm.itemsPerPage" ng-model="vm.page"
+                        ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>

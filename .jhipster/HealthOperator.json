@@ -1,0 +1,27 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "ansRegister",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "socialReason",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "obs",
+            "fieldType": "Boolean"
+        }
+    ],
+    "changelogDate": "20180316160825",
+    "dto": "mapstruct",
+    "service": "serviceImpl",
+    "facadeForService": "facadeClass",
+    "entityTableName": "health_operator",
+    "pagination": "pagination"
+}

@@ -1,0 +1,80 @@
+
+<div class="content content-bg">
+  <form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <h4 class="form-section" id="myAddressLabel" data-translate="homedicalApp.address.home.createOrEditLabel">Create or edit a Address</h4>
+
+    <div class="row row-form">
+
+        <div class="form-group col-xs-12 col-sm-6" ng-show="vm.address.id">
+            <label class="control-label" for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.address.id" readonly />
+        </div>
+        <div class="form-group form-group col-xs-12 col-sm-6">
+            <label class="control-label" data-translate="homedicalApp.address.street" for="field_street">Street</label>
+            <input type="text" class="form-control" name="street" id="field_street"
+                    ng-model="vm.address.street"
+                    />
+        </div>
+        <div class="form-group form-group col-xs-12 col-sm-6">
+            <label class="control-label" data-translate="homedicalApp.address.number" for="field_number">Number</label>
+            <input type="text" class="form-control" name="number" id="field_number"
+                    ng-model="vm.address.number"
+                    />
+        </div>
+        <div class="form-group form-group col-xs-12 col-sm-6">
+            <label class="control-label" data-translate="homedicalApp.address.zipcode" for="field_zipcode">Zipcode</label>
+            <input type="text" class="form-control" name="zipcode" id="field_zipcode"
+                    ng-model="vm.address.zipcode"
+                    />
+        </div>
+        <div class="form-group form-group col-xs-12 col-sm-6">
+            <label class="control-label" data-translate="homedicalApp.address.district" for="field_district">District</label>
+            <input type="text" class="form-control" name="district" id="field_district"
+                    ng-model="vm.address.district"
+                    />
+        </div>
+        <div class="form-group form-group col-xs-12 col-sm-6">
+            <label class="control-label" data-translate="homedicalApp.address.complement" for="field_complement">Complement</label>
+            <input type="text" class="form-control" name="complement" id="field_complement"
+                    ng-model="vm.address.complement"
+                    />
+        </div>
+
+        <div class="form-group form-group col-xs-12 col-sm-6">
+            <label data-translate="homedicalApp.address.city" for="field_city">City</label>
+               <select class="form-control" id="field_city" name="city" ng-model="vm.address.city" ng-options="city as city.id for city in vm.cities track by city.id">
+                   <option value=""></option>
+               </select>
+        </div>
+    </div>
+
+    <div class="form-footer">
+      <!-- botões -->
+      <div class="row row-form">
+        <div class="col-xs-12 text-right">
+          <!-- cancelar -->
+          <button class="btn btn-link"
+                  type="button"
+                  data-dismiss="modal"
+                  ng-click="vm.clear()">
+            <span data-translate="entity.action.cancel">Cancel</span>
+          </button>
+          <!-- end cancelar -->
+
+          <!-- salvar -->
+          <button class="btn btn-success"
+                  type="submit"
+                  ng-disabled="editForm.$invalid || vm.isSaving">
+            <span data-translate="entity.action.save">Save</span>
+          </button>
+          <!-- end salvar -->
+        </div>
+      </div>
+      <!-- end botões -->
+    </div>
+  </form>
+</div>

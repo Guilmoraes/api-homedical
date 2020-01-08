@@ -1,0 +1,44 @@
+
+<div class="content content-bg view-page">
+    <h2 class="form-section"><span data-translate="homedicalApp.state.detail.title">State</span> {{vm.state.id}}</h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <div class="row row-form">
+        <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="homedicalApp.state.name">Name</span></dt>
+        <dd>
+            <span>{{vm.state.name}}</span>
+        </dd>
+        <dt><span data-translate="homedicalApp.state.acronym">Acronym</span></dt>
+        <dd>
+            <span>{{vm.state.acronym}}</span>
+        </dd>
+        <dt><span data-translate="homedicalApp.state.active">Active</span></dt>
+        <dd>
+            <span>{{vm.state.active}}</span>
+        </dd>
+        <dt><span data-translate="homedicalApp.state.country">Country</span></dt>
+        <dd>
+            <a ui-sref="country-detail({id:vm.state.country.id})">{{vm.state.country.id}}</a>
+        </dd>
+    </dl>
+
+    </div>
+
+    <div class="form-footer">
+        <div class="row row-form">
+          <div class="col-lg-12 text-right">
+            <button ui-sref="^"
+                    class="btn btn-link">
+              <span data-translate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button" ui-sref="state.edit({id:vm.state.id})" class="btn btn-primary">
+              <span data-translate="entity.action.edit"> Edit</span>
+            </button>
+          </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,1 @@
+INSERT INTO professional_duty(duties_id, professional_id) VALUES ('9b129f27-d304-4217-9f73-5f4b680e2f0a', '179a277e-b7a8-4e86-90f5-d5cb4b94465d');

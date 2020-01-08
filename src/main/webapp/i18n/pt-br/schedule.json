@@ -1,0 +1,47 @@
+{
+    "homedicalApp": {
+        "schedule": {
+            "home": {
+                "title": "Atendimentos",
+                "createLabel": "Criar novo atendimento",
+                "createOrEditLabel": "Criar ou editar atendimento"
+            },
+            "created": "Um novo Schedule foi criado",
+            "schedulesPending": "Aprovação de Atendimentos",
+            "updated": "Um atendimento foi atualizado",
+            "deleted": "Um atendimento foi deletado",
+            "scheduleImages": "Fotos do Atendimento",
+            "noHasImage": "Nenhum",
+            "scheduleSignature": "Assinaturas",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir o atendomento"
+            },
+            "professional": {
+                "name": "Nome do professional",
+                "nameOfProfessional": "Nome do Professional"
+            },
+            "patient": {
+                "nameOfPatient": "Nome do Paciente"
+            },
+            "detail": {
+                "title": "Atendimentos"
+            },
+            "message": {
+                "updateStatusSchedule": {
+                    "success": "Status do atendimento atualizado com sucesso",
+                    "error": "Não foi possível alterar o status do atendimento",
+                    "fieldStatusEmpty":"Selecione o status do atendimento"
+
+                }
+            },
+            "start": "Inicio",
+            "finish": "Fim",
+            "status": "Status",
+            "placeHolder": {
+                "start": "ex: 06/04/2018",
+                "finish": "ex: 10/04/2018",
+                "name": "Nome do Professional"
+            }
+        }
+    }
+}

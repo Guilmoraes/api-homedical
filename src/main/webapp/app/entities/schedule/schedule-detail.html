@@ -1,0 +1,41 @@
+<div class="content content-bg view-page">
+    <h2 class="form-section"><span data-translate="homedicalApp.schedule.detail.title">Schedule</span>
+        {{vm.schedule.id}}</h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <div class="row row-form">
+        <dl class="dl-horizontal jh-entity-details">
+            <dt><span data-translate="homedicalApp.schedule.start">Start</span></dt>
+            <dd>
+                <span>{{vm.schedule.start | utcToLocal}}</span>
+            </dd>
+            <dt><span data-translate="homedicalApp.schedule.finish">Finish</span></dt>
+            <dd>
+                <span>{{vm.schedule.finish | utcToLocal}}</span>
+            </dd>
+            <dt><span data-translate="homedicalApp.schedule.status">Status</span></dt>
+            <dd>
+                <span
+                    data-translate="{{'homedicalApp.SchedulesStatus.' + vm.schedule.status}}">{{vm.schedule.status}}</span>
+            </dd>
+        </dl>
+
+    </div>
+
+    <div class="form-footer">
+        <div class="row row-form">
+            <div class="col-lg-12 text-right">
+                <button ui-sref="^"
+                        class="btn btn-link">
+                    <span data-translate="entity.action.back">Back</span>
+                </button>
+
+                <button type="button" ui-sref="schedule.edit({id:vm.schedule.id})" class="btn btn-primary">
+                    <span data-translate="entity.action.edit"> Edit</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+</div>

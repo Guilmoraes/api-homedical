@@ -1,0 +1,46 @@
+<div class="content content-bg">
+
+    <div class="list-header">
+        <div class="col-xs-12 col-sm-12 col-left">
+            <h2 data-translate="homedicalApp.professional.titleProfessionalDocuments">Documents to approve</h2>
+        </div>
+
+    </div>
+
+    <div ng-show="vm.professionalDocuments.length === 0">
+        <span data-translate="homedicalApp.professional.NotHaveDocumentsToApprove">
+            There are no documents to approve.</span>
+    </div>
+
+    <div class="table-responsive" ng-if="vm.professionalDocuments.length > 0">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th><span data-translate="homedicalApp.professional.name">Name</span>
+                    <th><span data-translate="homedicalApp.professional.documentStatus">Document Status</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="professional in vm.professionalDocuments track by professional.name">
+                    <td>{{professional.name}}</td>
+                    <td>Aguardando Aprovação</td>
+                    <td class="text-right">
+                        <button type="submit"
+                                ui-sref="documents-professional({ id: professional.id, name: professional.name })"
+                                class="btn btn-info btn-sm">
+                            <span data-translate="homedicalApp.professional.checkDocuments">Check Documents</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+    <div class="text-center">
+        <!-- <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count> -->
+        <uib-pagination class="list-pagination pagination-sm" total-items="vm.totalItems"
+                        items-per-page="vm.itemsPerPage" ng-model="vm.page"
+                        ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>

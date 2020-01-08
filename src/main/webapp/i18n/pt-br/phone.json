@@ -1,0 +1,23 @@
+{
+    "homedicalApp": {
+        "phone" : {
+            "home": {
+                "title": "Phones",
+                "createLabel": "Criar novo Phone",
+                "createOrEditLabel": "Criar ou editar Phone"
+            },
+            "created": "Um novo Phone foi criado com o identificador {{ param }}",
+            "updated": "Um Phone foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Phone foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Phone {{ id }}?"
+            },
+            "detail": {
+                "title": "Phone"
+            },
+            "areaCode": "Area Code",
+            "number": "Number",
+            "type": "Type"
+        }
+    }
+}

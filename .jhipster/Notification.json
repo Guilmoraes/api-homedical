@@ -1,0 +1,37 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "type",
+            "fieldType": "NotificationType",
+            "fieldValues": "MAIL,PUSH"
+        },
+        {
+            "fieldName": "sourceId",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "sourceType",
+            "fieldType": "NotificationSourceType",
+            "fieldValues": "USER"
+        },
+        {
+            "fieldName": "pending",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "executionDate",
+            "fieldType": "ZonedDateTime"
+        }
+    ],
+    "changelogDate": "20180309163453",
+    "dto": "no",
+    "service": "serviceImpl",
+    "facadeForService": "facadeClass",
+    "entityTableName": "notification",
+    "pagination": "pagination"
+}

@@ -1,0 +1,84 @@
+
+<div class="content content-bg">
+  <form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <h4 class="form-section" id="myNotificationLabel" data-translate="homedicalApp.notification.home.createOrEditLabel">Create or edit a Notification</h4>
+
+    <div class="row row-form">
+
+        <div class="form-group col-xs-12 col-sm-6" ng-show="vm.notification.id">
+            <label class="control-label" for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.notification.id" readonly />
+        </div>
+        <div class="form-group form-group col-xs-12 col-sm-6">
+            <label class="control-label" data-translate="homedicalApp.notification.type" for="field_type">Type</label>
+            <select class="form-control" name="type" ng-model="vm.notification.type" id="field_type">
+                <option value="MAIL" data-translate="homedicalApp.NotificationType.MAIL">MAIL</option>
+                <option value="PUSH" data-translate="homedicalApp.NotificationType.PUSH">PUSH</option>
+            </select>
+        </div>
+        <div class="form-group form-group col-xs-12 col-sm-6">
+            <label class="control-label" data-translate="homedicalApp.notification.sourceId" for="field_sourceId">Source Id</label>
+            <input type="text" class="form-control" name="sourceId" id="field_sourceId"
+                    ng-model="vm.notification.sourceId"
+                    required/>
+            <div ng-show="editForm.sourceId.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.sourceId.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group form-group col-xs-12 col-sm-6">
+            <label class="control-label" data-translate="homedicalApp.notification.sourceType" for="field_sourceType">Source Type</label>
+            <select class="form-control" name="sourceType" ng-model="vm.notification.sourceType" id="field_sourceType">
+                <option value="USER" data-translate="homedicalApp.NotificationSourceType.USER">USER</option>
+            </select>
+        </div>
+        <div class="form-group form-group col-xs-12 col-sm-6">
+            <label class="control-label" data-translate="homedicalApp.notification.pending" for="field_pending">Pending</label>
+                <input type="checkbox" name="pending" id="field_pending"
+                          ng-model="vm.notification.pending"/>
+        </div>
+        <div class="form-group form-group col-xs-12 col-sm-6">
+            <label class="control-label" data-translate="homedicalApp.notification.executionDate" for="field_executionDate">Execution Date</label>
+                <div class="input-group">
+                    <input id="field_executionDate" type="text" class="form-control" name="executionDate" datetime-picker="{{dateformat}}" ng-model="vm.notification.executionDate" is-open="vm.datePickerOpenStatus.executionDate"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('executionDate')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+
+    </div>
+
+    <div class="form-footer">
+      <!-- botões -->
+      <div class="row row-form">
+        <div class="col-xs-12 text-right">
+          <!-- cancelar -->
+          <button class="btn btn-link"
+                  type="button"
+                  data-dismiss="modal"
+                  ng-click="vm.clear()">
+            <span data-translate="entity.action.cancel">Cancel</span>
+          </button>
+          <!-- end cancelar -->
+
+          <!-- salvar -->
+          <button class="btn-save"
+                  type="submit"
+                  ng-disabled="editForm.$invalid || vm.isSaving">
+            <span data-translate="entity.action.save">Save</span>
+          </button>
+          <!-- end salvar -->
+        </div>
+      </div>
+      <!-- end botões -->
+    </div>
+  </form>
+</div>

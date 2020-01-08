@@ -1,0 +1,34 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="filiipake (generated)" id="1520622423304-1">
+        <addColumn tableName="professional">
+            <column name="address_id" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="filiipake (generated)" id="1520622423304-2">
+        <addColumn tableName="professional">
+            <column name="cpf" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="filiipake (generated)" id="1520622423304-3">
+        <addColumn tableName="professional">
+            <column name="phone_id" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="filiipake (generated)" id="1520622423304-4">
+        <addUniqueConstraint columnNames="address_id" constraintName="UK_j9j9frcej0vqas9bicpbhbjfw"
+                             tableName="professional"/>
+    </changeSet>
+    <changeSet author="filiipake (generated)" id="1520622423304-5">
+        <addUniqueConstraint columnNames="phone_id" constraintName="UK_mtyc8khfriwjlr4nreb37vd56"
+                             tableName="professional"/>
+    </changeSet>
+</databaseChangeLog>

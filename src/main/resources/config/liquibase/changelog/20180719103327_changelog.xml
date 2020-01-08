@@ -1,0 +1,21 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet id="filiipake" author="20180719103327-1">
+        <insert tableName="health_operator">
+            <column name="id" value="88cc30d8-8b59-11e8-9eb6-529269fb1459"/>
+            <column name="social_reason" value="Whirpool s.a"/>
+            <column name="ans_register" value="00000"/>
+            <column name="modality" value="MULTINATIONAL"/>
+            <column name="created_by" value="system"/>
+        </insert>
+        <insert tableName="health_operator">
+            <column name="id" value="88cc3448-8b59-11e8-9eb6-529269fb1459"/>
+            <column name="social_reason" value="Whirpool/Embraco"/>
+            <column name="ans_register" value="00000"/>
+            <column name="modality" value="MULTINATIONAL"/>
+            <column name="created_by" value="system"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

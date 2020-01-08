@@ -1,0 +1,22 @@
+{
+    "login": {
+        "title": "Autenticação",
+        "subtitle": "Insira seus dados abaixo",
+        "welcomeTo": "Bem vindo ao",
+        "form": {
+            "email": "Endereço de email",
+            "password": "Senha",
+            "password.placeholder": "Sua senha",
+            "rememberme": "Manter-me logado",
+            "button": "Entrar"
+        },
+        "messages": {
+            "error": {
+                "authentication": "<strong>Erro de autenticação!</strong> Por favor verifique suas credenciais e tente novamente."
+            }
+        },
+        "password" : {
+            "forgot": "Esqueci minha senha"
+        }
+    }
+}

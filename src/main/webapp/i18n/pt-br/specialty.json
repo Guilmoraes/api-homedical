@@ -1,0 +1,22 @@
+{
+    "homedicalApp": {
+        "specialty" : {
+            "home": {
+                "title": "Especialidades",
+                "createLabel": "Criar nova Especialidade",
+                "createOrEditLabel": "Criar ou editar Especialidade"
+            },
+            "created": "Uma nova Especialidade foi criada com o identificador {{ param }}",
+            "updated": "Uma Especialidade foi atualizado com o identificador {{ param }}",
+            "deleted": "Uma Especialidade foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Especialidade {{ id }}?"
+            },
+            "detail": {
+                "title": "Especialidade"
+            },
+            "name": "Nome",
+            "status": "Status"
+        }
+    }
+}

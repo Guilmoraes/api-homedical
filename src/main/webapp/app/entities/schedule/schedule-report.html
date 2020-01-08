@@ -1,0 +1,68 @@
+<div class="content content-bg view-page">
+    <h2 class="form-section"><span data-translate="homedicalApp.scheduleReport.report.title">Schedule Image</span></h2>
+
+    <div class="report-line" style="border-top: 0px">
+        <div>
+            <span data-translate="homedicalApp.scheduleReport.fields.client" class="field-title">Client</span>
+            <span class="field-description">{{vm.report.client}}</span>
+        </div>
+    </div>
+
+    <div class="report-line">
+        <div>
+            <span data-translate="homedicalApp.scheduleReport.fields.address" class="field-title">Address</span>
+            <span class="field-description">{{vm.report.address}}</span>
+        </div>
+    </div>
+
+    <div class="report-line">
+        <div>
+            <span data-translate="homedicalApp.scheduleReport.fields.employee" class="field-title">Employee</span>
+            <span class="field-description">{{vm.report.employee}}</span>
+        </div>
+    </div>
+
+    <div class="report-line">
+        <div>
+            <span data-translate="homedicalApp.scheduleReport.fields.checkin" class="field-title">Checkin</span>
+            <span class="field-description">{{vm.report.checkin | utcToLocal}}</span>
+        </div>
+        <div>
+            <span data-translate="homedicalApp.scheduleReport.fields.checkout" class="field-title">Checkout</span>
+            <span class="field-description">{{vm.report.checkout | utcToLocal}}</span>
+        </div>
+    </div>
+
+    <div class="report-line report-bottom-line">
+        <div>
+            <span data-translate="homedicalApp.scheduleReport.fields.contact" class="field-title">Contact</span>
+            <span class="field-description">{{vm.report.contact}}</span>
+        </div>
+    </div>
+
+    <span data-translate="homedicalApp.scheduleReport.fields.scheduleImages" class="field-title">Schedule Images</span>
+    <div style="margin-top: 15px">
+        <div ng-repeat="scheduleImage in vm.report.images track by scheduleImage.id" class="thumbnail-container">
+            <img src="{{scheduleImage.url}}" class="schedule-image"/>
+        </div>
+    </div>
+
+    <!--ng-class="vm.report.images != null && vm.report.images.length > 0 ? 'signature-container page-break' : 'signature-container'">-->
+    <div ng-show="vm.report.professionalSignature != null"
+        class="signature-container">
+        <span data-translate="homedicalApp.scheduleReport.fields.form" class="signature-title">Form</span>
+        <div>
+            <span data-translate="homedicalApp.scheduleReport.fields.document" class="field-title">Document</span>
+            <span class="field-description">{{vm.report.professionalSignature.document}}</span>
+            -
+            <span data-translate="homedicalApp.scheduleReport.fields.signatureFor" class="field-title">Name</span>
+            <span class="field-description">{{vm.report.professionalSignature.professionalName}}</span>
+        </div>
+        <img src="{{vm.report.professionalSignature.signature.image.url}}" class="signature-report"/>
+    </div>
+
+    <div ng-show="vm.report.caregiverSignature != null" class="signature-container">
+        <span data-translate="homedicalApp.scheduleReport.fields.signatureCaregiver" class="signature-title">Caregiver Signature</span>
+        <img src="{{vm.report.caregiverSignature.image.url}}" class="signature-report"/>
+    </div>
+</div>

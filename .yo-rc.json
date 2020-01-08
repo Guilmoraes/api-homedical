@@ -1,0 +1,38 @@
+{
+  "generator-esparta-hipster": {
+    "promptValues": {
+      "packageName": "br.com.homedical",
+      "nativeLanguage": "pt-br"
+    },
+    "jhipsterVersion": "4.6.0",
+    "baseName": "homedical",
+    "packageName": "br.com.homedical",
+    "packageFolder": "br/com/homedical",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "hibernateCache": "ehcache",
+    "clusteredHttpSession": false,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "mysql",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "gradle",
+    "enableSocialSignIn": false,
+    "jwtSecretKey": "fcfa76370dfab4842f65ba9c422c92e1ade08f1e",
+    "clientFramework": "angular1",
+    "useSass": true,
+    "clientPackageManager": "yarn",
+    "applicationType": "monolith",
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "enableTranslation": true,
+    "nativeLanguage": "pt-br",
+    "languages": [
+      "pt-br",
+      "en"
+    ]
+  }
+}

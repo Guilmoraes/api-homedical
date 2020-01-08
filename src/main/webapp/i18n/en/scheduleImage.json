@@ -1,0 +1,10 @@
+{
+    "homedicalApp": {
+        "scheduleImage": {
+            "detail": {
+                "title": "Imagens do Atendimento",
+                "signatureTitle": "Assinaturas do Atendimento"
+            }
+        }
+    }
+}

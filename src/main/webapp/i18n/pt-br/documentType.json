@@ -1,0 +1,24 @@
+{
+    "homedicalApp": {
+        "documentType" : {
+            "home": {
+                "title": "Tipos de documento",
+                "createLabel": "Criar novo tipo de documento",
+                "createOrEditLabel": "Criar ou editar um tipo de documento"
+            },
+            "created": "Um novo tipo de documento foi criado com o identificador {{ param }}",
+            "updated": "Um tipo de documento com o identificador {{ param }} foi atualizado ",
+            "deleted": "Um tipo de documento com o identificador {{ param }} foi deletado",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir o tipo de documento \"{{ name }}\"?"
+            },
+            "detail": {
+                "title": "Tipo de Documento"
+            },
+            "name": "Nome",
+            "required": "Obrigátorio",
+            "yes": "Sim",
+            "no": "Não"
+        }
+    }
+}

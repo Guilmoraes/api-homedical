@@ -1,0 +1,68 @@
+<div class="content content-bg">
+
+    <jhi-alert></jhi-alert>
+    <div class="list-header">
+        <div class="col-xs-12 col-sm-8 col-left">
+            <h2 data-translate="homedicalApp.notification.home.title">Notifications</h2>
+            <button class="btn-new hidden-xs" ui-sref="notification.new" >
+                <span  data-translate="homedicalApp.notification.home.createLabel">
+                    Create new Notification
+                </span>
+            </button>
+            <button class="btn-new hidden-sm hidden-md hidden-lg pull-right" ui-sref="notification.new" >
+                <span  data-translate="homedicalApp.notification.home.createLabel">
+                    <span class="fa fa-plus"></span>
+                </span>
+            </button>
+        </div>
+
+    </div>
+
+
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="type"><span data-translate="homedicalApp.notification.type">Type</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="sourceId"><span data-translate="homedicalApp.notification.sourceId">Source Id</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="sourceType"><span data-translate="homedicalApp.notification.sourceType">Source Type</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="pending"><span data-translate="homedicalApp.notification.pending">Pending</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="executionDate"><span data-translate="homedicalApp.notification.executionDate">Execution Date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="notification in vm.notifications track by notification.id">
+                    <td><a ui-sref="notification-detail({id:notification.id})">{{notification.id}}</a></td>
+                    <td data-translate="{{'homedicalApp.NotificationType.' + notification.type}}">{{notification.type}}</td>
+                    <td>{{notification.sourceId}}</td>
+                    <td data-translate="{{'homedicalApp.NotificationSourceType.' + notification.sourceType}}">{{notification.sourceType}}</td>
+                    <td>{{notification.pending}}</td>
+                    <td>{{notification.executionDate | date:'medium'}}</td>
+                    <td class="text-right list-buttons">
+                        <button type="submit"
+                                ui-sref="notification-detail({id:notification.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="notification.edit({id:notification.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="notification.delete({id:notification.id})"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <!-- <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count> -->
+        <uib-pagination class="list-pagination pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>

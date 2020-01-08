@@ -1,0 +1,29 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="filiipake (generated)" id="1521455269024-1">
+        <createTable tableName="professional_patients">
+            <column name="professional_id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="patient_id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="filiipake (generated)" id="1521455269024-2">
+        <addPrimaryKey columnNames="professional_id, patient_id" tableName="professional_patients"/>
+    </changeSet>
+    <changeSet author="filiipake (generated)" id="1521455269024-3">
+        <addForeignKeyConstraint baseColumnNames="professional_id" baseTableName="professional_patients"
+                                 constraintName="FKqo2srwc4avthnpi7wda82dsvh" deferrable="false"
+                                 initiallyDeferred="false" referencedColumnNames="id"
+                                 referencedTableName="professional"/>
+    </changeSet>
+    <changeSet author="filiipake (generated)" id="1521455269024-4">
+        <addForeignKeyConstraint baseColumnNames="patient_id" baseTableName="professional_patients"
+                                 constraintName="FKudxlx0kchdmmymaiu9p4iew7" deferrable="false"
+                                 initiallyDeferred="false" referencedColumnNames="id" referencedTableName="patient"/>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,24 @@
+<div class="content content-bg view-page">
+    <h2 ng-show="vm.hasScheduleImages" class="form-section"><span data-translate="homedicalApp.scheduleImage.detail.title">Schedule Image</span></h2>
+        <div ng-repeat="scheduleImage in vm.schedule.scheduleImages track by scheduleImage.id" class="thumbnail-container">
+            <img src="{{scheduleImage.url}}" class="schedule-image" />
+        </div>
+    <h2 ng-show="vm.hasSignatures" class="form-section"><span data-translate="homedicalApp.scheduleImage.detail.signatureTitle">Schedule Signature</span></h2>
+    <div ng-show="vm.hasSignatures">
+        <div ng-show="vm.signatureProfessional != null" class="signature-container">
+            <span data-translate="homedicalApp.scheduleImage.signatures.professional" class="signature-title">Professional Signature</span>
+            <img src="{{vm.signatureProfessional.image.url}}" class="signature-image" />
+        </div>
+
+        <div ng-show="vm.signatureCaregiver != null" class="signature-container">
+            <span data-translate="homedicalApp.scheduleImage.signatures.caregiver" class="signature-title">Caregiver Signature</span>
+            <img src="{{vm.signatureCaregiver.image.url}}" class="signature-image" />
+        </div>
+    </div>
+
+    <div ng-show="!vm.hasScheduleImages && !vm.hasSignatures" class="schedule-images-empty-container">
+        <span data-translate="homedicalApp.scheduleImage.detail.empty" class="schedule-images-empty-text">Empty</span>
+    </div>
+
+
+</div>

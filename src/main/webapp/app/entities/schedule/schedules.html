@@ -1,0 +1,43 @@
+<div class="content content-bg">
+
+    <jhi-alert></jhi-alert>
+    <div class="list-header">
+        <div class="col-xs-12 col-sm-8 col-left">
+            <h2 data-translate="homedicalApp.schedule.home.title">Schedules</h2>
+        </div>
+
+    </div>
+
+
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+            <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                <th jh-sort-by="id"><span data-translate="homedicalApp.schedule.professional.name">Name</span> <span
+                    class="glyphicon glyphicon-sort"></span></th>
+                <th jh-sort-by="start"><span data-translate="homedicalApp.schedule.start">Start</span> <span
+                    class="glyphicon glyphicon-sort"></span></th>
+                <th jh-sort-by="finish"><span data-translate="homedicalApp.schedule.finish">Finish</span> <span
+                    class="glyphicon glyphicon-sort"></span></th>
+                <th jh-sort-by="status"><span data-translate="homedicalApp.schedule.status">Status</span> <span
+                    class="glyphicon glyphicon-sort"></span></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="schedule in vm.schedules track by schedule.id">
+                <td>{{schedule.professional.name}}</td>
+                <td>{{schedule.start | utcToLocal}}</td>
+                <td>{{schedule.finish | utcToLocal}}</td>
+                <td data-translate="{{'homedicalApp.SchedulesStatus.' + schedule.status}}">{{schedule.status}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <!-- <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count> -->
+        <uib-pagination class="list-pagination pagination-sm" total-items="vm.totalItems"
+                        items-per-page="vm.itemsPerPage" ng-model="vm.page"
+                        ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>

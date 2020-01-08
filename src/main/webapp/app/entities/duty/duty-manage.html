@@ -1,0 +1,141 @@
+<div class="content content-bg">
+    <form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <h4 class="form-section" id="myDutyLabel" data-translate="homedicalApp.duty.home.createOrEditLabel">Create or
+            edit a Duty</h4>
+
+        <div class="row row-form">
+            <div class="form-group form-group col-xs-12 col-sm-10">
+                <label class="control-label" data-translate="homedicalApp.duty.name" for="field_name">Name</label>
+                <input type="text" class="form-control" name="name" id="field_name"
+                       ng-model="vm.duty.name"
+                       required
+                       maxlength="100"
+                       placeholder="{{'homedicalApp.duty.placeHolder.name'| translate}}"
+                />
+                <div ng-show="editForm.name.$invalid">
+                    <p class="help-block"
+                       ng-show="editForm.name.$error.required" data-translate="entity.validation.required">
+                        This field is required.
+                    </p>
+                </div>
+            </div>
+            <div class="form-group form-group col-xs-12 col-sm-4">
+
+                <label class="control-label" data-translate="homedicalApp.duty.start"
+                       for="field_start">Start</label>
+
+                <div class="input-group">
+                    <input id="field_start" type="text" class="form-control" name="start"
+                           datetime-picker="HH:mm" enable-date="false" ng-model="vm.duty.start"
+                           is-open="vm.datePickerOpenStatus.start"
+                           required
+                           placeholder="{{ 'homedicalApp.duty.placeHolder.start' | translate}}"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default btn-calendar"
+                                ng-click="vm.openCalendar('start')"><i
+                            class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+                <div ng-show="editForm.start.$invalid">
+                    <p class="help-block"
+                       ng-show="editForm.start.$error.required" data-translate="entity.validation.required">
+                        This field is required.
+                    </p>
+                </div>
+            </div>
+            <div class="form-group form-group col-xs-12 col-sm-4">
+                <label class="control-label" data-translate="homedicalApp.duty.finish"
+                       for="field_finish">Finish</label>
+                <div class="input-group">
+                    <input id="field_finish" type="text" class="form-control" name="finish"
+                           datetime-picker="HH:mm" enable-date="false" ng-model="vm.duty.finish"
+                           is-open="vm.datePickerOpenStatus.finish"
+                           required
+                           placeholder="{{ 'homedicalApp.duty.placeHolder.finish' | translate}}"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default btn-calendar" ng-click="vm.openCalendar('finish')"><i
+                            class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+                <div ng-show="editForm.finish.$invalid">
+                    <p class="help-block"
+                       ng-show="editForm.finish.$error.required" data-translate="entity.validation.required">
+                        This field is required.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row row-form">
+            <div class="form-group form-group col-xs-12 col-sm-4">
+                <label class="control-label" data-translate="homedicalApp.duty.overtime"
+                       for="field_overtime">Overtime</label>
+                <div class="input-group">
+                    <input id="field_overtime" type="text" class="form-control" name="overtime"
+                           datetime-picker="HH:mm" enable-date="false" ng-model="vm.duty.overtime"
+                           is-open="vm.datePickerOpenStatus.overtime"
+                           required
+                           placeholder="{{ 'homedicalApp.duty.placeHolder.overtime' | translate}}"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default btn-calendar"
+                                ng-click="vm.openCalendar('overtime')"><i
+                            class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+                <div ng-show="editForm.finish.$invalid">
+                    <p class="help-block"
+                       ng-show="editForm.finish.$error.required" data-translate="entity.validation.required">
+                        This field is required.
+                    </p>
+                </div>
+            </div>
+            <div class="form-group form-group col-xs-12 col-sm-4">
+                <label class="control-label" data-translate="homedicalApp.duty.price"
+                       for="field_price">Price</label>
+                    <input id="field_price" type="text" class="form-control" name="price"
+                           ng-model="vm.duty.price"
+                           ui-money-mask="2"
+                           min="0.01"
+                           required
+                           placeholder="{{ 'homedicalApp.duty.placeHolder.price' | translate}}"
+                    />
+                <div ng-show="editForm.price.$invalid">
+                    <p class="help-block"
+                       ng-show="editForm.price.$error.required" data-translate="entity.validation.required">
+                        This field is required.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-footer">
+            <!-- botões -->
+            <div class="row row-form">
+                <div class="col-xs-12 text-right">
+                    <!-- cancelar -->
+                    <button class="btn btn-link"
+                            type="button"
+                            data-dismiss="modal"
+                            ng-click="vm.clear()">
+                        <span data-translate="entity.action.cancel">Cancel</span>
+                    </button>
+                    <!-- end cancelar -->
+
+                    <!-- salvar -->
+                    <button class="btn-save"
+                            type="submit"
+                            ng-disabled="editForm.$invalid || vm.isSaving">
+                        <span data-translate="entity.action.save">Save</span>
+                    </button>
+                    <!-- end salvar -->
+                </div>
+            </div>
+            <!-- end botões -->
+        </div>
+    </form>
+</div>

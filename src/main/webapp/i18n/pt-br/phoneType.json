@@ -1,0 +1,11 @@
+{
+    "homedicalApp": {
+        "PhoneType" : {
+            "null": "",
+            "HOME": "HOME",
+            "PROFESSIONAL": "PROFESSIONAL",
+            "CELLULAR": "CELLULAR",
+            "OTHER": "OTHER"
+        }
+    }
+}

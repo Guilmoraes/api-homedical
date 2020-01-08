@@ -1,0 +1,67 @@
+
+<div class="content content-bg">
+  <form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <h4 class="form-section" id="myStateLabel" data-translate="homedicalApp.state.home.createOrEditLabel">Create or edit a State</h4>
+
+    <div class="row row-form">
+
+        <div class="form-group col-xs-12 col-sm-6" ng-show="vm.state.id">
+            <label class="control-label" for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.state.id" readonly />
+        </div>
+        <div class="form-group form-group col-xs-12 col-sm-6">
+            <label class="control-label" data-translate="homedicalApp.state.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                    ng-model="vm.state.name"
+                    />
+        </div>
+        <div class="form-group form-group col-xs-12 col-sm-6">
+            <label class="control-label" data-translate="homedicalApp.state.acronym" for="field_acronym">Acronym</label>
+            <input type="text" class="form-control" name="acronym" id="field_acronym"
+                    ng-model="vm.state.acronym"
+                    />
+        </div>
+        <div class="form-group form-group col-xs-12 col-sm-6">
+            <label class="control-label" data-translate="homedicalApp.state.active" for="field_active">Active</label>
+                <input type="checkbox" name="active" id="field_active"
+                          ng-model="vm.state.active"/>
+        </div>
+
+        <div class="form-group form-group col-xs-12 col-sm-6">
+            <label data-translate="homedicalApp.state.country" for="field_country">Country</label>
+               <select class="form-control" id="field_country" name="country" ng-model="vm.state.country" ng-options="country as country.id for country in vm.countries track by country.id">
+                   <option value=""></option>
+               </select>
+        </div>
+    </div>
+
+    <div class="form-footer">
+      <!-- botões -->
+      <div class="row row-form">
+        <div class="col-xs-12 text-right">
+          <!-- cancelar -->
+          <button class="btn btn-link"
+                  type="button"
+                  data-dismiss="modal"
+                  ng-click="vm.clear()">
+            <span data-translate="entity.action.cancel">Cancel</span>
+          </button>
+          <!-- end cancelar -->
+
+          <!-- salvar -->
+          <button class="btn btn-success"
+                  type="submit"
+                  ng-disabled="editForm.$invalid || vm.isSaving">
+            <span data-translate="entity.action.save">Save</span>
+          </button>
+          <!-- end salvar -->
+        </div>
+      </div>
+      <!-- end botões -->
+    </div>
+  </form>
+</div>

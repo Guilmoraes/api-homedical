@@ -1,0 +1,25 @@
+{
+    "homedicalApp": {
+        "notification" : {
+            "home": {
+                "title": "Notifications",
+                "createLabel": "Criar novo Notification",
+                "createOrEditLabel": "Criar ou editar Notification"
+            },
+            "created": "Um novo Notification foi criado com o identificador {{ param }}",
+            "updated": "Um Notification foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Notification foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Notification {{ id }}?"
+            },
+            "detail": {
+                "title": "Notification"
+            },
+            "type": "Type",
+            "sourceId": "Source Id",
+            "sourceType": "Source Type",
+            "pending": "Pending",
+            "executionDate": "Execution Date"
+        }
+    }
+}

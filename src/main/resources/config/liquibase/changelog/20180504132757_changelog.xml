@@ -1,0 +1,17 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="filiipake (generated)" id="1525451294360-1">
+        <addColumn tableName="schedule">
+            <column name="patient_id" type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="filiipake (generated)" id="1525451294360-2">
+        <addForeignKeyConstraint baseColumnNames="patient_id" baseTableName="schedule" constraintName="FKjas1rguk3qfmt719ywdcni9k7" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="patient"/>
+    </changeSet>
+    <changeSet author="filiipake (generated)" id="1525451294360-3">
+        <dropForeignKeyConstraint baseTableName="schedule" constraintName="FK6ixcrfvcqaqy7y8vcwu3gb2mi"/>
+    </changeSet>
+    <changeSet author="filiipake (generated)" id="1525451294360-4">
+        <dropColumn columnName="patients_id" tableName="schedule"/>
+    </changeSet>
+</databaseChangeLog>

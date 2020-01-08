@@ -1,0 +1,24 @@
+{
+    "homedicalApp": {
+        "state" : {
+            "home": {
+                "title": "States",
+                "createLabel": "Criar novo State",
+                "createOrEditLabel": "Criar ou editar State"
+            },
+            "created": "Um novo State foi criado com o identificador {{ param }}",
+            "updated": "Um State foi atualizado com o identificador {{ param }}",
+            "deleted": "Um State foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir State {{ id }}?"
+            },
+            "detail": {
+                "title": "State"
+            },
+            "name": "Name",
+            "acronym": "Acronym",
+            "active": "Active",
+            "country": "Country"
+        }
+    }
+}

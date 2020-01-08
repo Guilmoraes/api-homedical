@@ -1,0 +1,78 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="filiipake (generated)" id="1520359802830-1">
+        <createTable tableName="installation">
+            <column name="id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="datetime"/>
+            <column name="alias" type="VARCHAR(255)"/>
+            <column name="device_token" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="device_type" type="VARCHAR(255)"/>
+            <column name="os_version" type="VARCHAR(255)"/>
+            <column name="platform" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="filiipake (generated)" id="1520359802830-2">
+        <createTable tableName="photo">
+            <column name="id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="file" type="LONGBLOB"/>
+            <column name="file_content_type" type="VARCHAR(255)"/>
+            <column name="medium" type="VARCHAR(255)"/>
+            <column name="medium_name" type="VARCHAR(255)"/>
+            <column name="original" type="VARCHAR(255)"/>
+            <column name="original_name" type="VARCHAR(255)"/>
+            <column name="processed" type="BIT"/>
+            <column name="thumbnail" type="VARCHAR(255)"/>
+            <column name="thumbnail_name" type="VARCHAR(255)"/>
+            <column name="uuid" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="filiipake (generated)" id="1520359802830-3">
+        <addColumn tableName="address">
+            <column name="number" type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="filiipake (generated)" id="1520359802830-4">
+        <addColumn tableName="phone">
+            <column name="number" type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="filiipake (generated)" id="1520359802830-5">
+        <addColumn tableName="phone">
+            <column name="type" type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="filiipake (generated)" id="1520359802830-6">
+        <addPrimaryKey columnNames="id" constraintName="installationPK" tableName="installation"/>
+    </changeSet>
+    <changeSet author="filiipake (generated)" id="1520359802830-7">
+        <addPrimaryKey columnNames="id" constraintName="photoPK" tableName="photo"/>
+    </changeSet>
+    <changeSet author="filiipake (generated)" id="1520359802830-8">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="installation" constraintName="FKp50icd7uvoi29kyg0af4f6y0m" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="user"/>
+    </changeSet>
+    <changeSet author="filiipake (generated)" id="1520359802830-9">
+        <dropColumn columnName="esparta_number" tableName="address"/>
+    </changeSet>
+    <changeSet author="filiipake (generated)" id="1520359802830-10">
+        <dropColumn columnName="esparta_number" tableName="phone"/>
+    </changeSet>
+    <changeSet author="filiipake (generated)" id="1520359802830-11">
+        <dropColumn columnName="esparta_type" tableName="phone"/>
+    </changeSet>
+</databaseChangeLog>

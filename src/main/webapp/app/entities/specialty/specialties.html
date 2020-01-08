@@ -1,0 +1,50 @@
+<div class="content content-bg">
+
+    <jhi-alert></jhi-alert>
+    <div class="list-header">
+        <div class="col-xs-12 col-sm-8 col-left">
+            <h2 data-translate="homedicalApp.specialty.home.title">Specialties</h2>
+            <button class="btn-new hidden-xs" ui-sref="specialty.new" >
+                <span  data-translate="homedicalApp.specialty.home.createLabel">
+                    Create new Specialty
+                </span>
+            </button>
+            <button class="btn-new hidden-sm hidden-md hidden-lg pull-right" ui-sref="specialty.new" >
+                <span  data-translate="homedicalApp.specialty.home.createLabel">
+                    <span class="fa fa-plus"></span>
+                </span>
+            </button>
+        </div>
+
+    </div>
+
+
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+            <tr ascending="vm.reverse" callback="vm.transition()">
+                <th><span data-translate="homedicalApp.specialty.name">Name</span></th>
+                <th><span data-translate="homedicalApp.specialty.status">Status</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="specialty in vm.specialties track by specialty.id">
+                    <td>{{specialty.name}}</td>
+                    <td data-translate="{{'homedicalApp.ObjectStatus.' + specialty.status}}">{{specialty.status}}</td>
+                    <td class="text-right list-buttons">
+                        <button type="submit"
+                                ui-sref="specialty.edit({id:specialty.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <!-- <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count> -->
+        <uib-pagination class="list-pagination pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+{
+    "homedicalApp": {
+        "scheduleReport": {
+            "report": {
+                "title": "Relatório do Atendimento"
+            },
+            "fields": {
+                "client": "Cliente: ",
+                "address": "Endereço: ",
+                "employee": "Prestador de Serviço: ",
+                "checkin": "Entrada: ",
+                "checkout": "Saída: ",
+                "contact": "Contato: ",
+                "scheduleImages": "Fotos do atendimento: ",
+                "form": "Formulário: ",
+                "document": "Documento: ",
+                "signatureFor": "Assinatura de: ",
+                "signatureCaregiver": "Assinatura do cuidador"
+            }
+        }
+    }
+}

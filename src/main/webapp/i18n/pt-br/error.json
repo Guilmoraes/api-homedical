@@ -1,0 +1,8 @@
+{
+    "error": {
+        "title": "Página de erro!",
+        "403": "Você não tem autorização para acessar esta página.",
+        "patient.already.added": "Paciente já foi adicionado!",
+        "delete.patient.not.allowed": "Este paciente tem relação com atendimentos, profissionais e não pode ser excluído!"
+    }
+}

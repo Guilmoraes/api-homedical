@@ -1,0 +1,26 @@
+{
+    "homedicalApp": {
+        "address" : {
+            "home": {
+                "title": "Addresses",
+                "createLabel": "Criar novo Address",
+                "createOrEditLabel": "Criar ou editar Address"
+            },
+            "created": "Um novo Address foi criado com o identificador {{ param }}",
+            "updated": "Um Address foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Address foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Address {{ id }}?"
+            },
+            "detail": {
+                "title": "Address"
+            },
+            "street": "Street",
+            "number": "Number",
+            "zipcode": "Zipcode",
+            "district": "District",
+            "complement": "Complement",
+            "city": "City"
+        }
+    }
+}

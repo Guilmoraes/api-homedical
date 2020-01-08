@@ -1,0 +1,32 @@
+<div name="form">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="$close">
+        </button>
+        <h4 class="modal-title" data-translate="homedicalApp.patient.selectAddress">Selecionar Endereço</h4>
+    </div>
+
+    <div class="modal-body">
+
+        <input type="text"
+               class="form-control"
+               name="address"
+               id="field_address"
+               ng-maxlength="255"
+               ng-model="modalControllerVm.addressText"
+               ng-model-options="{debounce: 500}"
+               ng-change="modalControllerVm.processAddressChanged()"
+               placeholder="Digite o endereço"
+               required/>
+
+        <div class="set-margin-top-5" ng-repeat="address in modalControllerVm.addresses">
+
+            <span ng-if="address.route" class="set-margin-top-5"> <b>{{ address.route + ", " + address.number }} - {{address.cityName}} - {{ address.stateName }}</b> </span>
+
+            <span ng-if="!address.route" class="set-margin-top-5"> <b>{{ address.placeName }} - {{address.cityName}} - {{ address.stateName }}</b> </span>
+
+            <button ng-click="modalControllerVm.selectedItem(address)" class="btn-success set-margin-left-10"
+                    data-translate="homedicalApp.patient.buttonSelectAddress">Select
+            </button>
+        </div>
+    </div>
+</div>

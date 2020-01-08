@@ -1,0 +1,59 @@
+<div class="content content-bg">
+
+    <div class="list-header">
+        <div class="col-xs-12 col-sm-8 col-left">
+            <h2 data-translate="homedicalApp.documentType.home.title">Document Types</h2>
+            <button class="btn-new hidden-xs" ui-sref="document-type.new" >
+                <span  data-translate="homedicalApp.documentType.home.createLabel">
+                    Create new Document Type
+                </span>
+            </button>
+            <button class="btn-new hidden-sm hidden-md hidden-lg pull-right" ui-sref="document-type.new" >
+                <span  data-translate="homedicalApp.documentType.home.createLabel">
+                    <span class="fa fa-plus"></span>
+                </span>
+            </button>
+        </div>
+
+    </div>
+
+
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="name"><span data-translate="homedicalApp.documentType.name">Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="required"><span data-translate="homedicalApp.documentType.required">Required</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="documentType in vm.documentTypes track by documentType.id">
+                    <td>{{documentType.name}}</td>
+                    <td><span data-translate="{{'homedicalApp.documentType.' + (documentType.required ? 'yes' : 'no')}}">{{documentType.required}}</span></td>
+                    <td class="text-right list-buttons">
+                        <button type="submit"
+                                ui-sref="document-type-detail({id:documentType.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="document-type.edit({id:documentType.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="document-type.delete({id:documentType.id})"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <!-- <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count> -->
+        <uib-pagination class="list-pagination pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>

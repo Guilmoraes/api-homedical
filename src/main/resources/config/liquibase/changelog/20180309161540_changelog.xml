@@ -1,0 +1,19 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="filiipake (generated)" id="1520622950856-1">
+        <addForeignKeyConstraint baseColumnNames="address_id"
+                                 baseTableName="professional"
+                                 constraintName="FK9d5x8f1skgyud5bfmy24l0c8u"
+                                 referencedColumnNames="id"
+                                 referencedTableName="address"/>
+    </changeSet>
+    <changeSet author="filiipake (generated)" id="1520622950856-2">
+        <addForeignKeyConstraint baseColumnNames="phone_id"
+                                 baseTableName="professional"
+                                 constraintName="FKs9bii4irbl0va3jmxcps3wxuq"
+                                 referencedColumnNames="id"
+                                 referencedTableName="phone"/>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,59 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "phone",
+            "otherEntityName": "phone",
+            "relationshipType": "one-to-one",
+            "selectize": false,
+            "otherEntityField": "number",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "patient"
+        },
+        {
+            "relationshipName": "address",
+            "otherEntityName": "address",
+            "relationshipType": "one-to-one",
+            "selectize": false,
+            "otherEntityField": "street",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "patient"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "birthdate",
+            "fieldType": "LocalDate",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "clinicalCondition",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "healthOperator",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20180316120027",
+    "dto": "mapstruct",
+    "service": "serviceImpl",
+    "facadeForService": "facadeClass",
+    "entityTableName": "patient",
+    "pagination": "pagination"
+}

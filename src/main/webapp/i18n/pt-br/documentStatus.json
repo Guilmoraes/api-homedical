@@ -1,0 +1,10 @@
+{
+    "homedicalApp": {
+        "DocumentStatus" : {
+            "null": "",
+            "APPROVED": "Aprovado",
+            "WAITING_APPROVEMENT": "Aguardando Aprovação",
+            "NOT_APPROVED": "Não Aprovado"
+        }
+    }
+}

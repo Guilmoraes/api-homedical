@@ -1,0 +1,21 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet author="deividi (generated)" id="1520855410537-1">
+        <addColumn tableName="address">
+            <column name="lat" type="double precision"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="deividi (generated)" id="1520855410537-2">
+        <addColumn tableName="address">
+            <column name="lng" type="double precision"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="deividi (generated)" id="1520855410537-3">
+        <addColumn tableName="address">
+            <column name="valid_geo_address" type="bit"/>
+        </addColumn>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,28 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="felipe (generated)" id="1522944938518-1">
+        <addColumn tableName="duty">
+            <column name="overtime" type="time"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="felipe (generated)" id="1522944938518-2">
+        <addColumn tableName="duty">
+            <column name="start" type="time"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="felipe (generated)" id="1522944938518-3">
+        <dropColumn columnName="esparta_range" tableName="duty"/>
+    </changeSet>
+    <changeSet author="felipe (generated)" id="1522944938518-4">
+        <dropColumn columnName="esparta_start" tableName="duty"/>
+    </changeSet>
+
+    <changeSet author="luan (generated)" id="1522944938518-5">
+        <sql>
+            ALTER TABLE duty MODIFY finish TIME;
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,94 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="guilherme (generated)" id="1565283245774-1">
+        <createTable tableName="file">
+            <column name="id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="datetime"/>
+            <column name="file" type="LONGBLOB"/>
+            <column name="file_content_type" type="VARCHAR(255)"/>
+            <column name="file_name" type="VARCHAR(255)"/>
+            <column name="processed" type="BIT"/>
+            <column name="s3_name" type="VARCHAR(255)"/>
+            <column name="url" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="guilherme (generated)" id="1565283245774-2">
+        <createTable tableName="schedule_images">
+            <column name="schedule_id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="file_id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="guilherme (generated)" id="1565283245774-3">
+        <createTable tableName="schedule_signatures">
+            <column name="schedule_id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="signatures_id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="guilherme (generated)" id="1565283245774-4">
+        <createTable tableName="signature">
+            <column name="id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="datetime"/>
+            <column name="type" type="VARCHAR(255)"/>
+            <column name="image_id" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="guilherme (generated)" id="1565283245774-5">
+        <addPrimaryKey columnNames="schedule_id, file_id" tableName="schedule_images"/>
+    </changeSet>
+    <changeSet author="guilherme (generated)" id="1565283245774-6">
+        <addPrimaryKey columnNames="schedule_id, signatures_id" tableName="schedule_signatures"/>
+    </changeSet>
+    <changeSet author="guilherme (generated)" id="1565283245774-7">
+        <addPrimaryKey columnNames="id" constraintName="filePK" tableName="file"/>
+    </changeSet>
+    <changeSet author="guilherme (generated)" id="1565283245774-8">
+        <addPrimaryKey columnNames="id" constraintName="signaturePK" tableName="signature"/>
+    </changeSet>
+    <changeSet author="guilherme (generated)" id="1565283245774-9">
+        <addUniqueConstraint columnNames="signatures_id" constraintName="UK_3pntnan35tn99f84doxe3fees" tableName="schedule_signatures"/>
+    </changeSet>
+    <changeSet author="guilherme (generated)" id="1565283245774-10">
+        <addForeignKeyConstraint baseColumnNames="signatures_id" baseTableName="schedule_signatures" constraintName="FKddqfs22i477m99n2kw9yhp50w" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="signature"/>
+    </changeSet>
+    <changeSet author="guilherme (generated)" id="1565283245774-11">
+        <addForeignKeyConstraint baseColumnNames="image_id" baseTableName="signature" constraintName="FKkq03n2j21x32k5yqo1exqu85o" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="file"/>
+    </changeSet>
+    <changeSet author="guilherme (generated)" id="1565283245774-12">
+        <addForeignKeyConstraint baseColumnNames="schedule_id" baseTableName="schedule_signatures" constraintName="FKlgn5bmbdq6hbxsk2jivplxcnf" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="schedule"/>
+    </changeSet>
+    <changeSet author="guilherme (generated)" id="1565283245774-13">
+        <addForeignKeyConstraint baseColumnNames="file_id" baseTableName="schedule_images" constraintName="FKq2o93s662bggl5g276hkbwd49" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="file"/>
+    </changeSet>
+    <changeSet author="guilherme (generated)" id="1565283245774-14">
+        <addForeignKeyConstraint baseColumnNames="schedule_id" baseTableName="schedule_images" constraintName="FKtpvqfbcvep92nhf94mmv4lwi7" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="schedule"/>
+    </changeSet>
+    <changeSet author="guilherme (generated)" id="1565283245774-15">
+        <addNotNullConstraint columnDataType="clob" columnName="clinical_condition" tableName="patient"/>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,160 @@
+<div class="content content-bg">
+    <form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <h4 class="form-section" id="myPatientLabel" data-translate="homedicalApp.patient.home.createOrEditLabel">Create
+            or edit a Patient</h4>
+
+        <div class="row row-form">
+
+            <div class="form-group form-group col-xs-12">
+                <label class="control-label" data-translate="homedicalApp.patient.name" for="field_name">Name</label>
+                <input type="text"
+                       class="form-control"
+                       name="name"
+                       id="field_name"
+                       ng-maxlength="255"
+                       placeholder="{{ 'homedicalApp.patient.namePlaceholder' | translate}}"
+                       ng-model="vm.patient.name"
+                       required/>
+                <div ng-show="editForm.name.$invalid">
+                    <p class="help-block"
+                       ng-show="editForm.name.$error.required" data-translate="entity.validation.required">
+                        This field is required.
+                    </p>
+                </div>
+            </div>
+
+            <div class="form-group form-group col-xs-12 col-sm-6">
+                <label class="control-label" data-translate="homedicalApp.patient.birthdate" for="field_birthdate">Birthdate</label>
+
+                <input id="field_birthdate"
+                       type="text"
+                       class="form-control"
+                       name="birthdate"
+                       placeholder="{{ 'homedicalApp.patient.birthdatePlaceholder' | translate}}"
+                       ng-model="vm.patient.birthdate"
+                       ui-date-mask
+                       required/>
+
+                <div ng-show="editForm.birthdate.$invalid">
+                    <p class="help-block"
+                       ng-show="editForm.birthdate.$error.required" data-translate="entity.validation.required">
+                        This field is required.
+                    </p>
+                </div>
+            </div>
+
+            <div class="form-group form-group col-xs-12">
+                <label class="control-label" data-translate="homedicalApp.patient.clinicalCondition"
+                       for="field_clinicalCondition">Clinical Condition</label>
+                <textarea
+                    type="text"
+                    class="form-control form-text-area"
+                    name="clinicalCondition"
+                    id="field_clinicalCondition"
+                    ng-model="vm.patient.clinicalCondition"
+                    required/>
+                <div ng-show="editForm.clinicalCondition.$invalid">
+                    <p class="help-block"
+                       ng-show="editForm.clinicalCondition.$error.required" data-translate="entity.validation.required">
+                        This field is required.
+                    </p>
+                </div>
+            </div>
+
+            <div class="form-group form-group col-xs-12">
+                <label class="control-label" data-translate="homedicalApp.patient.phone"
+                       for="field_phone">Phone</label>
+
+                <input type="text"
+                       class="form-control"
+                       name="phone"
+                       id="field_phone"
+                       ui-br-phone-number
+                       placeholder="{{ 'homedicalApp.patient.phonePlaceholder' | translate}}"
+                       required
+                       ng-model="vm.patient.phone.number"/>
+
+                <div ng-show="editForm.phone.$invalid">
+                    <p class="help-block"
+                       ng-show="editForm.phone.$error.required" data-translate="entity.validation.required">
+                        This field is required.
+                    </p>
+                </div>
+            </div>
+
+            <div class="form-group form-group col-xs-12">
+                <label class="control-label" data-translate="homedicalApp.patient.healthOperator"
+                       for="field_healthOperator">HealthOperator</label>
+
+                <input selectize="{maxItems: 1, labelField: 'socialReason', searchField: 'socialReason'}"
+                       selectize-load-data="vm.loadHealthOperator(query, callback)"
+                       selectize-on-select="vm.healthOperatorSelected(id, model)"
+                       selectize-update-event="reload.healthOperators"
+                       selectize-label-type="disable"
+                       selectize-initial-data="vm.healthOperators"
+                       selectize-initial-data-load="true"
+                       selectize-initial-data-load-index="[vm.patient.healthOperator]"
+                       id="field_healthOperator"
+                       name="healthOperators"
+                       placeholder="{{ 'homedicalApp.patient.healthOperatorPlaceholder' | translate}}"
+                       required>
+
+                <div>
+                    <p class="help-block"
+                       data-translate="entity.validation.required">
+                        This field is required.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="form-group col-sm-8">
+                <label data-translate="homedicalApp.patient.address" for="field_address">Address</label>
+                <input type="text"
+                       class="form-control"
+                       name="address"
+                       id="field_address"
+                       readonly
+                       placeholder="{{'homedicalApp.patient.addressPlaceholder' | translate}}"
+                       ng-model="vm.patient.address.street ? vm.patient.address.street : vm.patient.address.zipcode"
+                       required/>
+            </div>
+
+            <div class="col-sm-4 set-margin-top-18">
+
+                <span class="btn btn-info" ng-click="vm.addressClicked()">
+                    <span data-translate="homedicalApp.patient.buttons.searchAddress">Search Address</span>
+                </span>
+
+            </div>
+        </div>
+
+        <div class="form-footer">
+            <!-- botões -->
+            <div class="row row-form">
+                <div class="col-xs-12 text-right">
+                    <!-- cancelar -->
+                    <button class="btn btn-link"
+                            type="button"
+                            data-dismiss="modal"
+                            ng-click="vm.clear()">
+                        <span data-translate="entity.action.cancel">Cancel</span>
+                    </button>
+                    <!-- end cancelar -->
+
+                    <!-- salvar -->
+                    <button class="btn-save"
+                            type="submit"
+                            ng-disabled="editForm.$invalid || vm.isSaving">
+                        <span data-translate="entity.action.save">Save</span>
+                    </button>
+                    <!-- end salvar -->
+                </div>
+            </div>
+            <!-- end botões -->
+        </div>
+    </form>
+</div>

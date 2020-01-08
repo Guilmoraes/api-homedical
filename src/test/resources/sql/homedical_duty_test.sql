@@ -1,0 +1,1 @@
+INSERT INTO duty(id, name, created_by, created_date, last_modified_by, last_modified_date, overtime, start, finish, price) VALUES ('9b129f27-d304-4217-9f73-5f4b680e2f0a','Plantao Casa do João', 'admin', '2018-04-05 18:44:57', 'admin', '2018-04-05 18:44:57', '12:00:00','13:00:00', '18:00:00', 125.43)

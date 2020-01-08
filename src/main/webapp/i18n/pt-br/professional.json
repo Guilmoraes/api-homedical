@@ -1,0 +1,69 @@
+{
+    "homedicalApp": {
+        "professional": {
+            "buttons": {
+                "patients": "Pacientes",
+                "addDuties": "Adicionar Plantão",
+                "addPatient": "Adicionar Paciente",
+                "removePatient": "Remover Paciente",
+                "removeDuty": "Remover plantão",
+                "duties": "Plantões",
+                "documents": "Documentos",
+                "search": "Procurar"
+            },
+            "duty": "Plantão",
+            "producerLabel": "Selecionar Paciente",
+            "selectDuty": "Selecionar Plantão",
+            "producerPlaceholder": "Digite o nome do paciente",
+            "home": {
+                "title": "Profissionais",
+                "search": "Pesquisar professional",
+                "searchPlaceholder": "Digite o nome do professional...",
+                "createLabel": "Criar novo Profissional",
+                "createOrEditLabel": "Criar ou editar Profissional"
+            },
+            "created": "Um novo Profissional foi criado com o identificador {{ param }}",
+            "updated": "Um Profissional foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Profissional foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Profissional {{ id }}?"
+            },
+            "detail": {
+                "title": "Profissional"
+            },
+            "name": "Nome Completo",
+            "user": "User",
+            "email": "Email",
+            "cpf": "Cpf",
+            "specialties": "Especialidades",
+            "phone": "Telefone",
+            "street": "Rua",
+            "number": "Número",
+            "patient": "Paciente",
+            "zipcode": "Cep",
+            "district": "Bairro",
+            "complement": "Complemento",
+            "namePlaceholder": "Digite o nome completo",
+            "emailPlaceholder": "Digite o e-mail",
+            "streetPlaceholder": "Digite o nome da rua",
+            "zipcodePlaceholder": "Digite o CEP",
+            "numberPlaceholder": "Digite o número da rua",
+            "districtPlaceholder": "Digite o bairro",
+            "city": "Cidade",
+            "cityPlaceholder": "Digite o nome da cidade",
+            "updateSuccess": "Pacientes atualizados com sucesso!",
+            "errors": {
+                "specialtyError": "Selecionar ao menos uma especialidade!",
+                "cityError": "Selecione uma Cidade",
+                "patientAlreadyAdded": "Paciente ja foi adicionado!",
+                "dutyAlreadAdded": "O Plantão ja foi adicionado!"
+            },
+            "successMessage": "Profissional salvo com sucesso!",
+            "dutySucessMessage": "Plantão adcionado com sucesso!",
+            "titleProfessionalDocuments": "Aprovar Documentos",
+            "checkDocuments": "Vereficar Documentos",
+            "documentStatus": "Status dos Documentos",
+            "NotHaveDocumentsToApprove": "Não existe documentos para aprovar no momento."
+        }
+    }
+}

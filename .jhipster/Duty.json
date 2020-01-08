@@ -1,0 +1,41 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "professional",
+            "otherEntityName": "professional",
+            "relationshipType": "many-to-many",
+            "selectize": false,
+            "otherEntityField": "professional",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "duty"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": []
+        },
+        {
+            "fieldName": "start",
+            "fieldType": "ZonedDateTime",
+            "fieldValidateRules": []
+        },
+        {
+            "fieldName": "finish",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "range",
+            "fieldType": "ZonedDateTime",
+            "fieldValidateRules": []
+        }
+    ],
+    "changelogDate": "20180405153310",
+    "dto": "mapstruct",
+    "service": "serviceImpl",
+    "facadeForService": "facadeClass",
+    "entityTableName": "duty",
+    "pagination": "pagination"
+}

@@ -1,0 +1,57 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="felipe (generated)" id="1523369614936-1">
+        <createTable tableName="schedule_duty">
+            <column name="duties_id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="schedule_id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="felipe (generated)" id="1523369614936-2">
+        <addColumn tableName="schedule">
+            <column name="patients_id" type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="felipe (generated)" id="1523369614936-3">
+        <addColumn tableName="schedule">
+            <column name="professional_id" type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="felipe (generated)" id="1523369614936-4">
+        <addColumn tableName="schedule">
+            <column name="start" type="datetime"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="felipe (generated)" id="1523369614936-5">
+        <addPrimaryKey columnNames="duties_id, schedule_id" tableName="schedule_duty"/>
+    </changeSet>
+    <changeSet author="felipe (generated)" id="1523369614936-6">
+        <addForeignKeyConstraint baseColumnNames="patients_id" baseTableName="schedule"
+                                 constraintName="FK6ixcrfvcqaqy7y8vcwu3gb2mi" deferrable="false"
+                                 initiallyDeferred="false" referencedColumnNames="id" referencedTableName="patient"/>
+    </changeSet>
+    <changeSet author="felipe (generated)" id="1523369614936-7">
+        <addForeignKeyConstraint baseColumnNames="professional_id" baseTableName="schedule"
+                                 constraintName="FK81gffywrluyn0r3bbuw577evj" deferrable="false"
+                                 initiallyDeferred="false" referencedColumnNames="id"
+                                 referencedTableName="professional"/>
+    </changeSet>
+    <changeSet author="felipe (generated)" id="1523369614936-8">
+        <addForeignKeyConstraint baseColumnNames="schedule_id" baseTableName="schedule_duty"
+                                 constraintName="FKb70x1et15jhhoqwpi2x23b1nc" deferrable="false"
+                                 initiallyDeferred="false" referencedColumnNames="id" referencedTableName="duty"/>
+    </changeSet>
+    <changeSet author="felipe (generated)" id="1523369614936-9">
+        <addForeignKeyConstraint baseColumnNames="duties_id" baseTableName="schedule_duty"
+                                 constraintName="FKeyyokkflwjupl83p98uvrmm5y" deferrable="false"
+                                 initiallyDeferred="false" referencedColumnNames="id" referencedTableName="schedule"/>
+    </changeSet>
+    <changeSet author="felipe (generated)" id="1523369614936-10">
+        <dropColumn columnName="esparta_start" tableName="schedule"/>
+    </changeSet>
+</databaseChangeLog>

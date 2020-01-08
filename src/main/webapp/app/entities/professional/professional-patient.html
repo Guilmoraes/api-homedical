@@ -1,0 +1,97 @@
+<div class="content content-bg">
+    <form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <h4 class="form-section" id="myControllerLabel" data-translate="homedicalApp.professional.producerLabel">
+            Select Patients</h4>
+
+        <div class="row row-form">
+
+
+            <div class="form-group col-xs-12">
+
+                <label class="control-label"
+                       data-translate="homedicalApp.professional.patient"
+                       for="field_patient">Patient</label>
+
+                <input
+                    selectize="{create: false, maxItems: 1, searchField: ['name','apcId']}"
+                    selectize-load-data="vm.loadPatients(query, callback)"
+                    selectize-on-select="vm.patientSelected(id, model)"
+                    selectize-update-event="reload.patients"
+                    selectize-label-type="disable"
+                    selectize-initial-data="vm.patients"
+                    name="PatientSelectize"
+                    id="field_patient"
+                    ng-model="vm.selectedProducer"
+                    placeholder="{{ 'homedicalApp.professional.producerPlaceholder' | translate}}">
+
+            </div>
+
+            <div class="form-group col-xs-12">
+                <div class="form-group">
+                    <button type="button"
+                            class="btn btn-sm btn-new btn-outline" ng-click="vm.addPatient()">
+
+                        <span class="glyphicon glyphicon-plus"></span>
+                        <span data-translate="homedicalApp.professional.buttons.addPatient"></span>
+
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row row-form" ng-repeat="patient in vm.professionalPatients track by $index">
+            <div class="form-group col-sm-6">
+                <label class="control-label" data-translate="homedicalApp.professional.patient">Patient</label>
+
+                <input type="text"
+                       class="form-control"
+                       name="patient"
+                       disabled
+                       id="field_professional_patient"
+                       required
+                       ng-model="patient.name"
+                />
+            </div>
+
+
+            <div class="form-group col-sm-3 set-margin-top-23">
+                <button type="button"
+                        ng-click="vm.removePatient(patient)"
+                        class="btn-sm bottom btn-danger">
+
+                    <span class="glyphicon glyphicon-remove"></span>
+                    <span data-translate="homedicalApp.professional.buttons.removePatient"></span>
+
+                </button>
+            </div>
+        </div>
+
+        <div class="form-footer">
+            <!-- botões -->
+            <div class="row row-form">
+                <div class="col-xs-12 text-right">
+                    <!-- cancelar -->
+                    <button class="btn btn-link"
+                            type="button"
+                            data-dismiss="modal"
+                            ng-click="vm.clear()">
+                        <span data-translate="entity.action.cancel">Cancel</span>
+                    </button>
+                    <!-- end cancelar -->
+
+                    <!-- salvar -->
+                    <button class="btn-save"
+                            type="submit"
+                            ng-disabled="editForm.$invalid || vm.isSaving">
+                        <span data-translate="entity.action.save">Save</span>
+                    </button>
+                    <!-- end salvar -->
+                </div>
+            </div>
+            <!-- end botões -->
+        </div>
+    </form>
+</div>

@@ -1,0 +1,68 @@
+<div class="content content-bg">
+
+    <jhi-alert></jhi-alert>
+    <div class="list-header">
+        <div class="col-xs-12 col-sm-8 col-left">
+            <h2 data-translate="homedicalApp.duty.home.title">Duties</h2>
+            <button class="btn-new hidden-xs" ui-sref="duty.new">
+                <span data-translate="homedicalApp.duty.home.createLabel">
+                    Create new Duty
+                </span>
+            </button>
+            <button class="btn-new hidden-sm hidden-md hidden-lg pull-right" ui-sref="duty.new">
+                <span data-translate="homedicalApp.duty.home.createLabel">
+                    <span class="fa fa-plus"></span>
+                </span>
+            </button>
+        </div>
+
+    </div>
+
+
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+            <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                <th jh-sort-by="name"><span data-translate="homedicalApp.duty.name">Name</span> <span
+                    class="glyphicon glyphicon-sort"></span></th>
+                <th jh-sort-by="start"><span data-translate="homedicalApp.duty.start">Start</span> <span
+                    class="glyphicon glyphicon-sort"></span></th>
+                <th jh-sort-by="finish"><span data-translate="homedicalApp.duty.finish">Finish</span> <span
+                    class="glyphicon glyphicon-sort"></span></th>
+                <th jh-sort-by="overtime"><span data-translate="homedicalApp.duty.overtime">overtime</span> <span
+                    class="glyphicon glyphicon-sort"></span></th>
+                <th jh-sort-by="price"><span data-translate="homedicalApp.duty.price">price</span> <span
+                    class="glyphicon glyphicon-sort"></span></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="duty in vm.duties track by duty.id">
+                <td>{{duty.name}}</td>
+                <td>{{duty.start | date:'medium'}}</td>
+                <td>{{duty.finish | date:'medium'}}</td>
+                <td>{{duty.overtime | date:'medium'}}</td>
+                <td>{{duty.price | currency}}</td>
+                <td class="text-right list-buttons">
+                    <button type="submit"
+                            ui-sref="duty.edit({id:duty.id})"
+                            class="btn btn-primary btn-sm">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </button>
+                    <button type="submit"
+                            ui-sref="duty.delete({id:duty.id})"
+                            class="btn btn-danger btn-sm">
+                        <span class="glyphicon glyphicon-remove-circle"></span>
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <!-- <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count> -->
+        <uib-pagination class="list-pagination pagination-sm" total-items="vm.totalItems"
+                        items-per-page="vm.itemsPerPage" ng-model="vm.page"
+                        ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>

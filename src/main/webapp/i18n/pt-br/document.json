@@ -1,0 +1,27 @@
+{
+    "homedicalApp": {
+        "document" : {
+            "home": {
+                "title": "Documentos"
+            },
+            "detail": {
+                "title": "Documento"
+            },
+            "url": "Url",
+            "fileName": "Nome do Arquivo",
+            "s3Name": "S 3 Name",
+            "file": "Arquivo",
+            "fileContentType": "Tipo do Arquivo",
+            "processed": "Processado",
+            "type": "Tipo",
+            "status": "Status",
+            "true": "Sim",
+            "false": "Não",
+            "openFile": "Abrir Arquivo",
+            "APPROVED" : "Aprovado",
+            "WAITING_APPROVEMENT": "Esperando Aprovação",
+            "NOT_SENT": "Não Enviado",
+            "successChangeStatusMessage": "O status do arquivo foi alterado com sucesso!"
+        }
+    }
+}

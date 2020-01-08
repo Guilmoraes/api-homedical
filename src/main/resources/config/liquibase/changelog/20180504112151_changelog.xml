@@ -1,0 +1,24 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="filiipake (generated)" id="1525443722624-1">
+        <addColumn tableName="schedule">
+            <column name="duty_id" type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="filiipake (generated)" id="1525443722624-2">
+        <addForeignKeyConstraint baseColumnNames="duty_id" baseTableName="schedule"
+                                 constraintName="FKdv0flrnyvcp4r6h22jdvdouec" deferrable="false"
+                                 initiallyDeferred="false" referencedColumnNames="id" referencedTableName="duty"/>
+    </changeSet>
+    <changeSet author="filiipake (generated)" id="1525443722624-3">
+        <dropForeignKeyConstraint baseTableName="schedule_duty" constraintName="FKb70x1et15jhhoqwpi2x23b1nc"/>
+    </changeSet>
+    <changeSet author="filiipake (generated)" id="1525443722624-4">
+        <dropForeignKeyConstraint baseTableName="schedule_duty" constraintName="FKeyyokkflwjupl83p98uvrmm5y"/>
+    </changeSet>
+    <changeSet author="filiipake (generated)" id="1525443722624-5">
+        <dropTable tableName="schedule_duty"/>
+    </changeSet>
+</databaseChangeLog>

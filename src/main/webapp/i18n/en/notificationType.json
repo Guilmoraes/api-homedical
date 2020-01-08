@@ -1,0 +1,9 @@
+{
+    "homedicalApp": {
+        "NotificationType" : {
+            "null": "",
+            "MAIL": "MAIL",
+            "PUSH": "PUSH"
+        }
+    }
+}

@@ -1,0 +1,23 @@
+{
+    "homedicalApp": {
+        "city" : {
+            "home": {
+                "title": "Cities",
+                "createLabel": "Criar novo City",
+                "createOrEditLabel": "Criar ou editar City"
+            },
+            "created": "Um novo City foi criado com o identificador {{ param }}",
+            "updated": "Um City foi atualizado com o identificador {{ param }}",
+            "deleted": "Um City foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir City {{ id }}?"
+            },
+            "detail": {
+                "title": "City"
+            },
+            "name": "Name",
+            "active": "Active",
+            "state": "State"
+        }
+    }
+}

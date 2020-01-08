@@ -1,0 +1,52 @@
+
+<div class="content content-bg view-page">
+    <h2 class="form-section"><span data-translate="homedicalApp.address.detail.title">Address</span> {{vm.address.id}}</h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <div class="row row-form">
+        <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="homedicalApp.address.street">Street</span></dt>
+        <dd>
+            <span>{{vm.address.street}}</span>
+        </dd>
+        <dt><span data-translate="homedicalApp.address.number">Number</span></dt>
+        <dd>
+            <span>{{vm.address.number}}</span>
+        </dd>
+        <dt><span data-translate="homedicalApp.address.zipcode">Zipcode</span></dt>
+        <dd>
+            <span>{{vm.address.zipcode}}</span>
+        </dd>
+        <dt><span data-translate="homedicalApp.address.district">District</span></dt>
+        <dd>
+            <span>{{vm.address.district}}</span>
+        </dd>
+        <dt><span data-translate="homedicalApp.address.complement">Complement</span></dt>
+        <dd>
+            <span>{{vm.address.complement}}</span>
+        </dd>
+        <dt><span data-translate="homedicalApp.address.city">City</span></dt>
+        <dd>
+            <a ui-sref="city-detail({id:vm.address.city.id})">{{vm.address.city.id}}</a>
+        </dd>
+    </dl>
+
+    </div>
+
+    <div class="form-footer">
+        <div class="row row-form">
+          <div class="col-lg-12 text-right">
+            <button ui-sref="^"
+                    class="btn btn-link">
+              <span data-translate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button" ui-sref="address.edit({id:vm.address.id})" class="btn btn-primary">
+              <span data-translate="entity.action.edit"> Edit</span>
+            </button>
+          </div>
+        </div>
+    </div>
+
+</div>

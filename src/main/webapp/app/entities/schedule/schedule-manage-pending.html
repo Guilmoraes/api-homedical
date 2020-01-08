@@ -1,0 +1,71 @@
+<div class="content content-bg">
+    <form name="editForm" role="form" novalidate show-validation ng-submit="vm.save()">
+
+        <jhi-alert></jhi-alert>
+        <div class="list-header">
+            <div class="col-xs-12 col-sm-8 col-left">
+                <h2 data-translate="homedicalApp.schedule.schedulesPending">Schedules</h2>
+            </div>
+
+        </div>
+        <div class="row row-form">
+            <div class="form-group col-xs-12 col-sm-6">
+                <label class="control-label" for="name"
+                       data-translate="homedicalApp.schedule.professional.name">Name</label>
+                <input type="text" class="form-control" id="name" name="name"
+                       ng-model="vm.schedule.professional.name" readonly/>
+            </div>
+
+            <div class="form-group form-group col-xs-12 col-sm-6">
+                <label class="control-label" data-translate="homedicalApp.schedule.status"
+                       for="field_status">Status</label>
+                <select class="form-control" name="status" ng-model="vm.schedule.status" id="field_status">
+                    <option value="APPROVED" data-translate="homedicalApp.SchedulesStatus.APPROVED">APPROVED</option>
+                    <option value="PENDING" data-translate="homedicalApp.SchedulesStatus.REFUSED">REFUSED</option>
+                </select>
+            </div>
+
+            <div class="form-group col-xs-12 col-sm-6">
+                <label class="control-label" for="start" data-translate="homedicalApp.schedule.start">Start</label>
+                <input type="text" class="form-control" id="start" name="start"
+                       ng-model="vm.schedule.start" readonly
+                       ui-date-mask
+                />
+            </div>
+
+            <div class="form-group col-xs-12 col-sm-6">
+                <label class="control-label" for="finish" data-translate="homedicalApp.schedule.finish">Finish</label>
+                <input type="text" class="form-control" id="finish" name="finish"
+                       ng-model="vm.schedule.finish"
+                       ui-date-mask
+                       readonly/>
+            </div>
+        </div>
+
+        <div class="form-footer">
+            <!-- botões -->
+            <div class="row row-form">
+                <div class="col-xs-12 text-right">
+                    <!-- cancelar -->
+                    <button class="btn btn-link"
+                            type="button"
+                            data-dismiss="modal"
+                            ng-click="vm.clear()">
+                        <span data-translate="entity.action.cancel">Cancel</span>
+                    </button>
+                    <!-- end cancelar -->
+
+                    <!-- salvar -->
+                    <button class="btn btn-success"
+                            type="submit"
+                            ng-disabled="vm.validation"
+                    >
+                        <span data-translate="entity.action.save">Save</span>
+                    </button>
+                    <!-- end salvar -->
+                </div>
+            </div>
+            <!-- end botões -->
+        </div>
+    </form>
+</div>

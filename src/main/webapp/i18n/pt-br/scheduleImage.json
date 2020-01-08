@@ -1,0 +1,15 @@
+{
+    "homedicalApp": {
+        "scheduleImage": {
+            "detail": {
+                "title": "Imagens do Atendimento",
+                "empty": "Não existe imagens ou assinaturas para apresentar",
+                "signatureTitle": "Assinaturas do Atendimento"
+            },
+            "signatures": {
+                "caregiver": "Assinatura do Cuidador",
+                "professional": "Assinatura do Professional"
+            }
+        }
+    }
+}
